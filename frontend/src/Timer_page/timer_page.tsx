@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import Clock from '../component/clock';
-import { timer_value_loader_to_test } from '../keys/value_changer';
+import { timer_value_loader_to_test } from '../keys/timer_change';
 import { useSelector } from 'react-redux';
 import type { RootState } from '../redux_state_manegemet/store';
 

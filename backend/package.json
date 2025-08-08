@@ -12,5 +12,14 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@types/axios": "^0.9.36",
+    "@types/body-parser": "^1.19.6",
+    "@types/puppeteer": "^5.4.7",
+    "axios": "^1.11.0",
+    "body-parser": "^2.2.0",
+    "mongoose": "^8.17.1",
+    "puppeteer": "^24.16.0"
   }
 }

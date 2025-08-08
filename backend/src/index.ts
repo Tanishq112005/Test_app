@@ -7,7 +7,7 @@ import solutionCheckingCodeforces from "./solution_checking";
 import { mongo_db_connect } from "./database/database";
 import { login } from "./database/login";
 import { new_user } from "./database/insert_new_user";
-import adding_contest_information from "./database/adding_contest";
+import adding_contest_information from "./database/adding_contest.ts";
 import { user_details_getting } from "./database/user_details";
 import { validating } from "./vallidating";
 

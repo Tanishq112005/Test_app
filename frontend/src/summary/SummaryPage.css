@@ -1,0 +1,213 @@
+/* src/pages/SummaryPage.css */
+
+/* --- Base & Font --- */
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f7f8fa;
+    color: #333;
+  }
+  
+  /* --- Main Page Container --- */
+  .summary-page-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+  }
+  
+  .summary-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: #ffffff;
+    border-bottom: 1px solid #dee2e6;
+    flex-shrink: 0;
+  }
+  
+  .summary-header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  /* --- 3-Column Grid Layout --- */
+  .summary-main-content {
+    display: grid;
+    grid-template-columns: 80px 1fr 1fr; /* Sidebar | Question | Editor */
+    gap: 1.5rem;
+    padding: 1.5rem;
+    flex-grow: 1;
+    overflow: hidden;
+  }
+  
+  /* --- Column 1: Sidebar --- */
+  .summary-sidebar {
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    padding: 1rem;
+    overflow-y: auto;
+    width : 100px;
+  }
+  
+  /* --- Column 2: Question Panel --- */
+  .summary-question-panel {
+    background-color: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    padding: 1.5rem 2rem;
+    overflow-y: auto;
+   
+  }
+  
+  /* --- Column 3: Editor Panel --- */
+  .summary-editor-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow: hidden;
+  }
+  
+  .editor-wrapper {
+    flex-grow: 1; /* Makes editor take all available space */
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+    overflow: hidden; /* Important for Monaco Editor */
+  }
+  
+  .editor-footer {
+    flex-shrink: 0;
+    background: #fff;
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+  }
+  
+  .problem-link-container {
+    margin-bottom: 1rem;
+  }
+  .problem-link-container a {
+    color: #007bff;
+    text-decoration: none;
+    word-break: break-all;
+    margin-left: 8px;
+  }
+  .problem-link-container a:hover {
+    text-decoration: underline;
+  }
+  
+  /* --- Solved/Failed Button Styling --- */
+  .solve-status-container p {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+  }
+  .solve-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  .solve-btn {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid transparent;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  .solve-btn.solved { background-color: #e9f7ec; color: #28a745; }
+  .solve-btn.failed { background-color: #fbebee; color: #dc3545; }
+  
+  .solve-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+  
+  .solve-btn.active.solved {
+    background-color: #28a745;
+    color: white;
+    border-color: #1c7430;
+  }
+  .solve-btn.active.failed {
+    background-color: #dc3545;
+    color: white;
+    border-color: #a71d2a;
+  }
+  
+  /* --- Modal Styling --- */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 25, 41, 0.7); /* Dark semi-transparent overlay */
+    backdrop-filter: blur(5px); /* This creates the blur effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 2rem 2.5rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+  }
+  
+  .modal-content h3 {
+    margin-top: 0;
+    font-size: 1.5rem;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .modal-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .modal-btn-confirm {
+    background-color: #28a745;
+    color: white;
+  }
+  .modal-btn-confirm:hover {
+    background-color: #218838;
+  }
+  
+  .modal-btn-cancel {
+    background-color: #6c757d;
+    color: white;
+  }
+  .modal-btn-cancel:hover {
+    background-color: #5a6268;
+  }
+  
+  .submit-contest-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.2s;
+  }
+  .submit-contest-btn:hover {
+    background-color: #0056b3;
+  }

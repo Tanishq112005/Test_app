@@ -1,0 +1,133 @@
+.why-us-section {
+    padding: 4rem 2rem;
+  }
+  
+  .why-us-section h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 3rem;
+  }
+  
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .benefit-card {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: left;
+  }
+  
+  .benefit-card h3 {
+    color: #4A90E2;
+    font-size: 1.5rem;
+  }
+  
+  /* Responsive Media Queries */
+  @media (max-width: 768px) {
+    .why-us-section {
+      padding: 3rem 1.5rem;
+    }
+  
+    .why-us-section h2 {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+      .why-us-section {
+          padding: 2rem 1rem;
+      }
+  }```
+  
+  #### `components/FeaturesSection.css`
+  This is a key responsive change. The flex-direction is changed from `row` to `column` on smaller screens so the dashboard screenshot appears below the features list.
+  
+  ```css
+  .features-section {
+    padding: 4rem 2rem;
+    background-color: #ffffff;
+  }
+  
+  .features-section h2 {
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 3rem;
+  }
+  
+  .features-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .features-list {
+    flex: 1;
+    text-align: left;
+  }
+  
+  .feature-item {
+    margin-bottom: 2rem;
+  }
+  
+  .feature-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .feature-item h4 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+  }
+  
+  .dashboard-screenshot {
+    flex: 1;
+  }
+  
+  .screenshot-placeholder {
+    border: 2px dashed #4A90E2;
+    border-radius: 8px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f8ff;
+    color: #4A90E2;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  /* Responsive Media Queries */
+  @media (max-width: 992px) {
+      .features-container {
+          flex-direction: column;
+      }
+      .features-list {
+          margin-bottom: 3rem;
+      }
+  }
+  
+  @media (max-width: 768px) {
+    .features-section {
+      padding: 3rem 1.5rem;
+    }
+  
+    .features-section h2 {
+      font-size: 2rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+      .features-section {
+          padding: 2rem 1rem;
+      }
+  }

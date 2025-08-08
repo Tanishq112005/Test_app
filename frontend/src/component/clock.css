@@ -1,0 +1,23 @@
+
+
+.timer-wrapper {
+    text-align: center; 
+    color: #333; 
+  }
+  
+  .prompt-text {
+    font-size: 2rem; 
+    font-weight: 300;
+    margin-bottom: 1rem; 
+  }
+  
+  .timer-display {
+    font-size: 7rem;
+    font-weight: bold;
+    
+ 
+    font-family: 'Roboto Mono', 'Courier New', monospace;
+    
+    letter-spacing: -5px; 
+    color: #1e1e1e; 
+  }

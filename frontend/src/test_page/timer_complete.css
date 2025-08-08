@@ -1,0 +1,51 @@
+
+.timer-complete-overlay {
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.75); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+    backdrop-filter: blur(5px); 
+  }
+  
+  .timer-complete-modal {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 90%;
+    max-width: 450px;
+    transform: translateY(-20px);
+    animation: modal-appear 0.4s ease-out forwards;
+  }
+  
+  .timer-complete-modal h2 {
+    margin-top: 0;
+    font-size: 2rem;
+    color: #d9534f; 
+  }
+  
+  .timer-complete-modal p {
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 0;
+  }
+  
+  
+  @keyframes modal-appear {
+    from {
+      opacity: 0;
+      transform: translateY(0px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(-20px);
+    }
+  }

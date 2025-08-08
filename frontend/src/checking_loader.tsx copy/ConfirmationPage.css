@@ -1,0 +1,215 @@
+/* General Body Styles (Optional, but good practice) */
+body {
+  background-color: #f0f2f5;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #333;
+}
+
+/* Main Container */
+.confirmation-container {
+  background-color: #ffffff;
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+}
+
+/* Header Section */
+.confirmation-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.confirmation-header p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #4b5563;
+  margin-bottom: 2rem;
+}
+
+/* Rules Section */
+.rules-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.rule-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.rule-icon {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: #007bff;
+}
+
+.rule-content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.25rem 0;
+  color: #1f2937;
+}
+
+.rule-content p {
+  margin: 0;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+.rule-content p strong {
+  color: #d9534f;
+}
+
+/* Declaration / Checkbox Section */
+.declaration-section {
+  background-color: #f9fafb;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  margin-top: 2rem;
+}
+
+.confirmation-checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.confirmation-checkbox-container input[type='checkbox'] {
+  display: none;
+}
+
+/* Custom Checkbox Style */
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #adb5bd;
+  border-radius: 4px;
+  margin-right: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Checkmark Style */
+.custom-checkbox .checkmark {
+  display: none;
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff;
+  clip-path: polygon(14% 44%, 0 65%, 24% 89%, 39% 73%, 86% 27%, 71% 11%);
+}
+
+.confirmation-checkbox-container input:checked + .custom-checkbox {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.confirmation-checkbox-container input:checked + .custom-checkbox .checkmark {
+  display: block;
+}
+
+.declaration-label {
+  color: #374151;
+  font-weight: 500;
+}
+
+/* Start Button */
+.start-button {
+  width: 100%;
+  margin-top: 2rem;
+  padding: 0.85rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+.start-button:hover:not(:disabled) {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+.start-button:disabled {
+  background-color: #a0c3e6;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .confirmation-container {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .confirmation-header h1 {
+    font-size: 1.75rem;
+  }
+}
+
+/* Language Selector Styles */
+.editor-container {
+  position: relative; 
+  display: inline-block; 
+}
+
+.select-btn {
+  background-color: #f8f9fa;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 200px;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+
+.select-btn:hover {
+  background-color: #e9ecef;
+}
+
+.lang-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  list-style: none;
+  padding: 0.5rem 0;
+  margin: 0.25rem 0 0 0;
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e5e7eb;
+  z-index: 10;
+  width: 100%;
+}
+
+.lang-list li button {
+  width: 100%;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.lang-list li button:hover {
+  background-color: #f0f2f5;
+}

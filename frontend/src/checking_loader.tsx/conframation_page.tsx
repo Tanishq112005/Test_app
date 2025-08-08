@@ -24,6 +24,9 @@ const FullScreenIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
 );
 
+const FileCheckIcon = () => (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m9 15 2 2 4-4"></path></svg>
+);
 const RuleItem = ({ icon , title, children }) => (
     <div className="rule-item">
         <div className="rule-icon">{icon}</div>
@@ -63,7 +66,7 @@ function ConfirmationPage() {
             </header>
 
             <main>
-                <div className="rules-grid">
+           
               
                     <RuleItem icon={<FullScreenIcon />} title="Mandatory Full-Screen">
                        <p>To ensure a focused environment, the contest will <strong>automatically enter full-screen mode</strong> upon starting. Exiting full-screen will immediately end your session.</p>
@@ -77,18 +80,21 @@ function ConfirmationPage() {
                         <p>This is an individual assessment. You must <strong>not</strong> collaborate, share solutions, or use external resources (e.g., other people, websites like Stack Overflow, or AI code generators). All work must be your own.</p>
                     </RuleItem>
 
-                    <RuleItem icon={<CodeIcon />} title="Language & Allowed Resources">
-                        <p>Please select your preferred language below. You may only use the built-in code editor. Do not use any external devices.</p>
-                        <div style={{ marginTop: '1rem' }}>
-                           <Coading_language /> {/* <-- Use the imported component here */}
-                        </div>
-                    </RuleItem>
-
                     <RuleItem icon={<TimeIcon />} title="Time Limit & Submission">
                         <p>The contest has a strict time limit of <strong>{contestDuration} minutes</strong>. Your code will be automatically submitted when the timer expires.</p>
                     </RuleItem>
-                </div>
-
+            
+                  
+                <RuleItem icon={<FileCheckIcon />} title="AI Evaluation & Post-Contest Summary">
+                        <p>When your code is reviewed by the AI, if it marks your solution as incorrect even though you believe it should pass, it's best to move on to the next problem. After the test, you can go to the summary page, click the link for that question, and run your code again to see if it passes all the test cases. </p>
+                    </RuleItem>
+                <RuleItem icon={<CodeIcon />} title="Language & Allowed Resources">
+                        <p>Please select your preferred language below. You may only use the built-in code editor. Do not use any external devices.</p>
+                        <div style={{ marginTop: '1rem' }}>
+                           <Coading_language />
+                        </div>
+                    </RuleItem>
+               
                 <div className="declaration-section">
                     <label htmlFor="declaration" className="confirmation-checkbox-container">
                         <input
@@ -104,6 +110,7 @@ function ConfirmationPage() {
                             I have read, understood, and agree to abide by all the contest rules.
                         </span>
                     </label>
+            
                 </div>
             </main>
 
@@ -116,7 +123,9 @@ function ConfirmationPage() {
                     {agreed ? 'Start Contest' : 'Agree to Rules to Start'}
                 </button>
             </footer>
+            
         </div>
+        
     );
 }
 

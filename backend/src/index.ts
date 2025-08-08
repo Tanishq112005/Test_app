@@ -3,13 +3,12 @@ import { port_number } from "./keys";
 import bodyParser from "body-parser";
 import puppeteer from "puppeteer";
 import ai_testing from "./ai";
-import solutionCheckingCodeforces from "./solution_checking";
 import { mongo_db_connect } from "./database/database";
 import { login } from "./database/login";
 import { new_user } from "./database/insert_new_user";
-import adding_contest_information from "./database/adding_contest.ts";
-import { user_details_getting } from "./database/user_details";
-import { validating } from "./vallidating";
+import adding_contest_information from "./database/adding_contest";
+import { user_details_getting } from "./database/userdetails";
+import { validating } from "./validating";
 
 const cors = require('cors') ; 
 
@@ -293,12 +292,6 @@ app.post("/checking_the_problem" , ai_testing , function (req : any , res : any)
 } )
 
 
-app.post("/checking_the_solution_codeforces" , solutionCheckingCodeforces , function (req : any , res : any) {
-  const result = req.body.result ; 
-  res.status(200).json({
-    result : result
-  })
-}  )
 
 
 

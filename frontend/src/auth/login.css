@@ -1,0 +1,125 @@
+/* Main container for the whole page */
+.loginPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5; /* A light grey background makes the white card pop */
+    padding: 20px;
+}
+
+/* The white login card */
+.loginContainer {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.title {
+    margin-bottom: 24px;
+    color: #333;
+    font-size: 2rem;
+    font-weight: 600;
+}
+
+.inputGroup {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.inputGroup label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+}
+
+.inputGroup input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+}
+
+.inputGroup input:focus {
+    outline: none;
+    border-color: #007bff; /* Highlight color on focus */
+}
+
+.loginButton {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 10px;
+}
+
+.loginButton:hover:not(:disabled) {
+    background-color: #0056b3;
+}
+
+.loginButton:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.loginButton:disabled {
+    background-color: #a0c3e6;
+    cursor: not-allowed;
+}
+
+.errorMessage {
+    color: #d93025; /* A standard error red */
+    background-color: #fbeae9;
+    border: 1px solid #f9d3d0;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 0.9rem;
+}
+
+.linksContainer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 480px) {
+    .loginContainer {
+        padding: 25px;
+    }
+
+    .title {
+        font-size: 1.8rem;
+    }
+
+    .linksContainer {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+}

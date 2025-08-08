@@ -1,0 +1,1 @@
+export const timer_value_loader_to_test : any = 0.2 ;

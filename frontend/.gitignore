@@ -1,3 +1,5 @@
+.keys/links.ts
+.keys/timer_change.ts
 # Logs
 logs
 *.log

@@ -1,6 +1,4 @@
-/* src/pages/SummaryPage.css */
 
-/* --- Base & Font --- */
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
@@ -8,7 +6,7 @@ body {
     color: #333;
   }
   
-  /* --- Main Page Container --- */
+ 
   .summary-page-container {
     display: flex;
     flex-direction: column;
@@ -31,7 +29,7 @@ body {
     font-size: 1.5rem;
   }
   
-  /* --- 3-Column Grid Layout --- */
+
   .summary-main-content {
     display: grid;
     grid-template-columns: 80px 1fr 1fr; /* Sidebar | Question | Editor */

@@ -10,6 +10,7 @@ import Link_generator from './link_generator';
 import Question_solved_or_not from './question_solved_or_not';
 import Result_Saving from './submit_button_clicking';
 import link_generator from './link_generator';
+import QuestionDataLoader from './QuestionDataLoader';
 
 function SummaryPage() {
   const link : any= link_generator();
@@ -22,7 +23,7 @@ function SummaryPage() {
       </header>
 
       <div className="summary-main-content">
-        {/* Column 1: Sidebar */}
+      <QuestionDataLoader></QuestionDataLoader>
         <div className="summary-sidebar">
           <Side_bar />
         </div>
@@ -31,7 +32,7 @@ function SummaryPage() {
           <QuestionDisplay />
         </div>
 
-        {/* Column 3: Editor and Controls */}
+       
         <section className="summary-editor-panel">
           <div className="editor-wrapper">
             <Editor_page />

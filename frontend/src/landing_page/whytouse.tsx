@@ -1,26 +1,39 @@
 import React from 'react';
-import './whytouse.css';
+import { FaLaptopCode, FaStar, FaChartLine } from 'react-icons/fa';
+
+const benefitsData = [
+  {
+    icon: <FaLaptopCode />,
+    title: 'Realistic Test Environment',
+    description: 'Our timed tests simulate real interview conditions, helping you manage time and perform under pressure.',
+  },
+  {
+    icon: <FaStar />,
+    title: ' High-Quality Questions',
+    description: 'We meticulously curate a comprehensive collection of problems from the gold-standard platforms, LeetCode and Codeforces, ensuring you practice with the most relevant and challenging questions appearing in  top tech interviews',
+  },
+  {
+    icon: <FaChartLine />,
+    title: 'Visualize Your Growth',
+    description: 'Gain insights into your coding journey with a powerful analytics dashboard. Instantly see your total solved questions, with a clear distinction between problems originating from LeetCode and Codeforces.'
+  },
+];
 
 const WhyUsSection = () => {
   return (
     <section className="why-us-section">
-      <h2>Why Use Our Platform to Ace the Interview?</h2>
+      <h2>Why Choose AlgoDojo?</h2>
       <div className="benefits-grid">
-        <div className="benefit-card">
-          <h3>Realistic Test Environment</h3>
-          <p>Our timed tests simulate real interview conditions, helping you manage time and perform under pressure.</p>
-        </div>
-        <div className="benefit-card">
-          <h3>Curated High-Quality Questions</h3>
-          <p>We feature a curated selection of problems from LeetCode and Codeforces that frequently appear in top tech company interviews.</p>
-        </div>
-        <div className="benefit-card">
-          <h3>Track Your Progress</h3>
-          <p>Monitor your performance, identify your weak areas, and focus your practice on what matters most.</p>
-        </div>
+        {benefitsData.map((benefit, index) => (
+          <div className="benefit-card" key={index}>
+            <div className="benefit-card__icon">{benefit.icon}</div>
+            <h3>{benefit.title}</h3>
+            <p>{benefit.description}</p>
+          </div>
+        ))}
       </div>
     </section>
   );
-}
+};
 
 export default WhyUsSection;

@@ -1,103 +1,316 @@
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    background-color: #f5f5f5;
-  }
-  
-  .App {
-    text-align: center;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-  }```
-  
-  #### `components/Header.css`
-  This update makes the header stack vertically on smaller screens for better readability and usability.
-  
-  ```css
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 3rem;
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap; /* Allow wrapping on small screens */
-  }
-  
-  .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .auth-buttons .login-btn,
-  .auth-buttons .signup-btn {
-    padding: 0.6rem 1.2rem;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    margin-left: 1rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  .auth-buttons .login-btn {
-    background-color: transparent;
-    color: #4A90E2;
-    border: 1px solid #4A90E2;
-  }
-  
-  .auth-buttons .login-btn:hover {
-      background-color: #f0f8ff;
-  }
-  
-  .auth-buttons .signup-btn {
-    background-color: #4A90E2;
-    color: #ffffff;
-  }
-  
-  .auth-buttons .signup-btn:hover {
-    background-color: #357ABD;
-  }
-  
-  
-  /* Responsive Media Queries */
-  @media (max-width: 768px) {
-    .header {
-      flex-direction: column;
-      padding: 1rem;
-    }
-  
-    .logo {
-      margin-bottom: 1rem;
-    }
-  
-    .auth-buttons {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      margin-top: 1rem;
-    }
-  
-    .auth-buttons .login-btn,
-    .auth-buttons .signup-btn {
-      width: 45%;
-      margin: 0 5px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-      .auth-buttons {
-          flex-direction: column;
-          align-items: center;
-      }
-  
-      .auth-buttons .login-btn,
-      .auth-buttons .signup-btn {
-          width: 80%;
-          margin-bottom: 0.5rem;
-      }
-  }
+/* =================================================================== */
+/* LANDING PAGE STYLES - COMPLETE, SCOPED & FINAL                      */
+/* =================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;500&display=swap');
+
+/* --- Base Styles for Landing Page Wrapper --- */
+.landing-page {
+  overflow-x: hidden;
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7f9fc;
+  color: #34495e;
+  line-height: 1.6;
+}
+
+/* --- Scoped Typography --- */
+.landing-page h1,
+.landing-page h2,
+.landing-page h3,
+.landing-page h4 {
+  font-family: 'Poppins', sans-serif;
+  color: #2c3e50;
+  font-weight: 700;
+}
+
+.landing-page h2 {
+  font-size: 2.8rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.landing-page section {
+  padding: 6rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* =================================================================== */
+/* HEADER                                                              */
+/* =================================================================== */
+.landing-page .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 4rem;
+  background-color: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.landing-page .header__logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #4A90E2;
+}
+
+.landing-page .header__nav-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+/* =================================================================== */
+/* BUTTONS                                                             */
+/* =================================================================== */
+.landing-page .btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-weight: 500;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.landing-page .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.landing-page .btn--outline {
+  background-color: transparent;
+  border-color: #4A90E2;
+  color: #4A90E2;
+}
+
+.landing-page .btn--outline:hover {
+  background-color: #4A90E2;
+  color: #ffffff;
+}
+
+.landing-page .btn--primary {
+  background-color: #4A90E2;
+  color: #ffffff;
+  border-color: #4A90E2;
+}
+
+.landing-page .btn--primary:hover {
+  background-color: #357ABD;
+  border-color: #357ABD;
+}
+
+/* =================================================================== */
+/* HERO SECTION                                                        */
+/* =================================================================== */
+.landing-page .hero {
+  background: linear-gradient(135deg, #4A90E2, #50E3C2);
+  color: #ffffff;
+  padding: 8rem 2rem;
+  text-align: center;
+  min-width: 100%;
+}
+
+.landing-page .hero__content h1 {
+  font-size: 3.5rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+}
+
+.landing-page .hero__content p {
+  font-size: 1.25rem;
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
+}
+
+.landing-page .btn--cta {
+  background-color: #ffffff;
+  color: #4A90E2;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+}
+
+/* =================================================================== */
+/* WHY US SECTION                                                      */
+/* =================================================================== */
+.landing-page .why-us-section {
+  padding-bottom: 1.5rem;
+  max-width: none;
+}
+
+.landing-page .benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.landing-page .benefit-card {
+  background-color: #f7f9fc;
+  padding: 2.5rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.landing-page .benefit-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.landing-page .benefit-card__icon {
+  font-size: 2.5rem;
+  color: #4A90E2;
+  margin-bottom: 1rem;
+}
+
+
+.landing-page .benefit-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+/* =================================================================== */
+/* FEATURES SECTION (Horizontal Layout)                                */
+/* =================================================================== */
+.landing-page .features-section {
+  padding: 4rem 1rem;
+}
+
+.landing-page .features-section__intro {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 1rem auto;
+}
+
+.landing-page .features-section__subtitle {
+  font-size: 1.1rem;
+  color: #34495e;
+  line-height: 1.6;
+}
+
+
+.landing-page .features-section__card {
+  display: flex;
+  flex-direction: column;
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.landing-page .features-section__visual {
+  padding: 1.5rem;
+  /* border-bottom: 1px solid #e5e7eb; */
+}
+
+.landing-page .mockup-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.landing-page .mockup-dot { width: 12px; height: 12px; border-radius: 50%; }
+
+
+.landing-page .mockup-image-container {
+    max-width: 85%; 
+    margin: 1rem auto 0 auto; 
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.landing-page .mockup-image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+.landing-page .features-section__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2.5rem;
+}
+
+
+.landing-page .feature-box {
+  background-color: #ffffff;
+  padding: 3rem 2rem; /* CHANGED: Increased top/bottom padding to make the box taller */
+  text-align: center;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.landing-page .feature-box:hover {
+  transform: translateY(-5px);
+  background-color: #ffffff;
+  border-color: #d1d5db;
+}
+
+.landing-page .feature-box__icon {
+  font-size: 2.5rem;
+  color: #4A90E2;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+
+.landing-page .feature-box__title {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.landing-page .feature-box__description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #34495e;
+  margin: 0;
+}
+
+/* =================================================================== */
+/* FOOTER                                                              */
+/* =================================================================== */
+.landing-page .footer {
+  background-color: #2c3e50;
+  color: #aeb9c5;
+  padding: 4rem 2rem;
+  text-align: center;
+  max-width: none;
+}
+
+.landing-page .footer__content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+.landing-page .footer__socials { display: flex; gap: 1.5rem; }
+.landing-page .footer__socials a { color: #ffffff; font-size: 1.5rem; transition: color 0.3s ease, transform 0.3s ease; }
+.landing-page .footer__socials a:hover { color: #50E3C2; transform: translateY(-3px); }
+.landing-page .footer__links a { color: #aeb9c5; text-decoration: none; margin: 0 1rem; transition: color 0.3s ease; }
+.landing-page .footer__links a:hover { color: #ffffff; }
+
+/* =================================================================== */
+/* RESPONSIVE MEDIA QUERIES                                            */
+/* =================================================================== */
+@media (max-width: 768px) {
+  .landing-page h2 { font-size: 2.2rem; }
+  .landing-page section { padding: 4rem 1.5rem; }
+  .landing-page .header { flex-direction: column; gap: 1rem; padding: 1rem 2rem; }
+  .landing-page .hero__content h1 { font-size: 2.8rem; }
+  .landing-page .hero__content p { font-size: 1.1rem; }
+  .landing-page .features-section__grid { padding: 2rem 1.5rem; }
+}
+
+@media (max-width: 480px) {
+  .landing-page h2 { font-size: 1.8rem; }
+  .landing-page section { padding: 3rem 1rem; }
+  .landing-page .hero__content h1 { font-size: 2.2rem; }
+  .landing-page .hero__content p { font-size: 1rem; }
+  .landing-page .footer__links { display: flex; flex-direction: column; gap: 0.5rem; }
+}

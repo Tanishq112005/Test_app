@@ -15,11 +15,13 @@ import Timer_page from './Timer_page/timer_page.tsx';
 import Test_page from './test_page/test_page.tsx';
 
 import ConfirmationPage from './checking_loader.tsx/conframation_page.tsx';
-import Landing_Page from './landing_page/landing_page.tsx';
+
 import Login_Page from './auth/login.tsx';
 import Dashboard from './dashboard/components/dashboard.tsx';
 import SignUp from './auth/sign_up.tsx';
 import SummaryPage from './summary/Summarypage.tsx';
+import Landing_Page from './landing_page/landing_page.tsx';
+
 
 
 

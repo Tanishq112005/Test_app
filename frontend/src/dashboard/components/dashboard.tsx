@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { useNavigate } from 'react-router';
-import './Dashboard.css'; // Make sure this CSS file is in the same directory
+import { useNavigate } from 'react-router'; 
+import './Dashboard.css';
 import {
   FaTrophy,
   FaPlus,
@@ -9,19 +9,19 @@ import {
   FaLaptopCode,
   FaCalendarAlt,
   FaChevronLeft,
-  FaChevronRight
+  FaChevronRight,
+  FaCheckCircle,
 } from 'react-icons/fa';
 import { useSelector } from 'react-redux';
-import type { RootState } from '../../redux_state_manegemet/store'; // Adjust this path to your store
+import type { RootState } from '../../redux_state_manegemet/store';
 
-// --- TYPE DEFINITIONS ---
 
 interface Contest {
   name: string;
   date: string;
   solved: string;
   duration: string;
-  status: string;
+  status: 'Completed';
 }
 
 interface ModalProps {
@@ -30,42 +30,39 @@ interface ModalProps {
     children: React.ReactNode;
 }
 
-// --- HELPER FUNCTION FOR DEVICE DETECTION ---
-// Placed outside the component as it doesn't depend on props or state
 function isConsideredMobile(): boolean {
-    // Priority 1: Use the modern, reliable userAgentData API if available
-    if (navigator.userAgentData && navigator.userAgentData.mobile) {
-        return true;
-    }
-    // Fallback 2: Check for touch support combined with a common mobile/tablet screen width
+    if (navigator.userAgentData && navigator.userAgentData.mobile) return true;
     const hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-    if (hasTouch && window.innerWidth < 1024) {
-        return true;
-    }
-    return false;
+    return hasTouch && window.innerWidth < 1024;
 }
 
-// --- REUSABLE COMPONENTS ---
+function getInitials(name: string): string {
+    if (!name) return 'U';
+    const words = name.split(' ');
+    if (words.length > 1) {
+        return (words[0][0] + words[words.length - 1][0]).toUpperCase();
+    }
+    return name.substring(0, 2).toUpperCase();
+}
+
+
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null;
-
     return (
         <div className="modal-overlay" onClick={onClose}>
             <div className="modal-content" onClick={(e) => e.stopPropagation()}>
                 {children}
-                <button className="modal-close-btn" onClick={onClose}>
-                    Close
-                </button>
+                <button className="modal-close-btn" onClick={onClose}>Close</button>
             </div>
         </div>
     );
 };
 
-const SkeletonCard = ({ type }: { type: 'profile' | 'stat' | 'history' }) => {
+const SkeletonCard: React.FC<{ type: 'profile' | 'stat' | 'history' }> = ({ type }) => {
   if (type === 'profile') {
     return (
-      <div className="card user-profile-card" style={{ background: '#a5b4fc', transition: 'none', transform: 'none', boxShadow: 'none' }}>
+      <div className="card user-profile-card" style={{ background: '#e5e7eb', transition: 'none', transform: 'none', boxShadow: 'none' }}>
         <div className="profile-main">
           <div className="skeleton skeleton-avatar"></div>
           <div>
@@ -76,41 +73,41 @@ const SkeletonCard = ({ type }: { type: 'profile' | 'stat' | 'history' }) => {
       </div>
     );
   }
-  if (type === 'history') {
-     return <div className="card skeleton skeleton-table" style={{ transition: 'none', transform: 'none', boxShadow: 'none' }}></div>
-  }
-  return <div className="card skeleton skeleton-card" style={{ transition: 'none', transform: 'none', boxShadow: 'none' }}></div>;
+  if (type === 'history') return <div className="card skeleton skeleton-table" />;
+  return <div className="card skeleton skeleton-card" />;
 };
+
 
 const DashboardHeader: React.FC<{ onStartContest: () => void }> = ({ onStartContest }) => (
     <header className="dashboard-header">
       <div className="header-title">
         <FaTrophy className="trophy-icon" />
-        <h1>Coding Dashboard</h1>
+        <h1>Dashboard</h1>
       </div>
       <button className="start-contest-btn" onClick={onStartContest}>
-        <FaPlus /> Start New Contest
+        <FaPlus /> New Contest
       </button>
     </header>
 );
 
-
 const UserProfile: React.FC<{ username: string, email: string }> = ({ username, email }) => {
-     const navigate = useNavigate() ; 
-    function removing_cookies() {
+     const navigate = useNavigate();
+    const handleLogout = () => {
       localStorage.removeItem('authToken');
-       navigate("/") ; 
+      navigate("/");
     }
-    return <div className="card user-profile-card">
-      <div className="profile-main">
-        <div className="avatar"></div>
-        <div className="profile-info">
-          <h2>{username}</h2>
-          <p>{email}</p>
+    return (
+      <div className="card user-profile-card">
+        <div className="profile-main">
+          <div className="avatar">{getInitials(username)}</div>
+          <div className="profile-info">
+            <h2>{username}</h2>
+            <p>{email}</p>
+          </div>
         </div>
+        <button className="logout-btn" onClick={handleLogout}><FaSignOutAlt /> Logout</button>
       </div>
-      <button className="logout-btn" onClick={removing_cookies}><FaSignOutAlt /> Logout</button>
-    </div>
+    );
 }
 
 interface StatCardProps {
@@ -118,12 +115,15 @@ interface StatCardProps {
     title: string;
     mainValue: string;
     subText: string;
-    colorClass: string;
+    colorClass: 'blue' | 'green' | 'orange' | 'purple';
 }
   
 const StatCard: React.FC<StatCardProps> = ({ icon, title, mainValue, subText, colorClass }) => (
     <div className={`card stat-card ${colorClass}`}>
-      <div className="stat-card-header">{icon}<h3>{title}</h3></div>
+      <div className="stat-card-header">
+        <span className="icon-wrapper">{icon}</span>
+        <h3>{title}</h3>
+      </div>
       <p className="stat-main-value">{mainValue}</p>
       <p className="stat-sub-text">{subText}</p>
     </div>
@@ -134,14 +134,6 @@ const ContestHistory: React.FC<{ contests: Contest[] }> = ({ contests }) => {
   const itemsPerPage = 5;
   const totalPages = Math.ceil(contests.length / itemsPerPage);
 
-  const handleNextPage = () => {
-    setCurrentPage((prev) => Math.min(prev + 1, totalPages));
-  };
-  
-  const handlePrevPage = () => {
-    setCurrentPage((prev) => Math.max(prev - 1, 1));
-  };
-
   const currentContests = contests.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -151,9 +143,9 @@ const ContestHistory: React.FC<{ contests: Contest[] }> = ({ contests }) => {
     return (
         <div className="card contest-history-card">
             <h2>Contest History</h2>
-            <p style={{ textAlign: 'center', padding: '2rem' }}>No contest history found.</p>
+            <p style={{ textAlign: 'center', padding: '2rem', color: '#6b7280' }}>No contests taken yet. Start a new one!</p>
         </div>
-    )
+    );
   }
 
   return (
@@ -162,11 +154,11 @@ const ContestHistory: React.FC<{ contests: Contest[] }> = ({ contests }) => {
       <table>
         <thead>
           <tr>
-            <th>CONTEST NAME</th>
-            <th>DATE</th>
-            <th>QUESTIONS SOLVED</th>
-            <th>DURATION</th>
-            <th>STATUS</th>
+            <th>Contest Name</th>
+            <th>Date</th>
+            <th>Solved</th>
+            <th>Duration</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
@@ -177,18 +169,20 @@ const ContestHistory: React.FC<{ contests: Contest[] }> = ({ contests }) => {
               <td data-label="Solved">{contest.solved}</td>
               <td data-label="Duration">{contest.duration}</td>
               <td data-label="Status">
-                <span className="status-pill completed">{contest.status}</span>
+                <span className="status-pill completed">
+                    <FaCheckCircle /> {contest.status}
+                </span>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
       <div className="pagination">
-        <button className="pagination-btn" onClick={handlePrevPage} disabled={currentPage === 1}>
+        <button className="pagination-btn" onClick={() => setCurrentPage(p => p - 1)} disabled={currentPage === 1}>
           <FaChevronLeft /> <span className="pagination-text">Previous</span>
         </button>
         <span>Page {currentPage} of {totalPages}</span>
-        <button className="pagination-btn" onClick={handleNextPage} disabled={currentPage === totalPages}>
+        <button className="pagination-btn" onClick={() => setCurrentPage(p => p + 1)} disabled={currentPage === totalPages}>
           <span className="pagination-text">Next</span> <FaChevronRight />
         </button>
       </div>
@@ -197,13 +191,13 @@ const ContestHistory: React.FC<{ contests: Contest[] }> = ({ contests }) => {
 };
 
 
-// --- MAIN DASHBOARD COMPONENT ---
+
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
-  const information_contest = useSelector((s: RootState) => s.user_inforamtion.value);
+  const userInfo = useSelector((state: RootState) => state.user_inforamtion.value);
 
   const handleStartContestClick = () => {
     if (isConsideredMobile()) {
@@ -216,50 +210,49 @@ const Dashboard: React.FC = () => {
   const dashboardData = useMemo(() => {
     const initialData = {
         contests: [] as Contest[],
-        stats: {
-            total_question_solved: 0,
-            total_leetcode_solved: 0,
-            total_codeforces_solved: 0,
-            total_contest: 0,
-        }
+        stats: { total_question_solved: 0, total_leetcode_solved: 0, total_codeforces_solved: 0, total_contest: 0 }
     };
     
-    if (!information_contest?.contest_information) {
-      return initialData;
-    }
+    if (!userInfo?.contest_information) return initialData;
 
-    let total_codeforces_solved = 0;
-    let total_leetcode_solved = 0;
+    let totalCodeforcesSolved = 0;
+    let totalLeetcodeSolved = 0;
 
-    const allContests: Contest[] = information_contest.contest_information.map((contest: any, i: number) => {
-        total_codeforces_solved += contest.solved_codeforces_question || 0;
-        total_leetcode_solved += contest.solved_leetcode_question || 0;
+    const allContests: Contest[] = userInfo.contest_information.map((contest: any, i: number) => {
+        const solvedCodeforces = contest.solved_codeforces_question || 0;
+        const solvedLeetcode = contest.solved_leetcode_question || 0;
+        totalCodeforcesSolved += solvedCodeforces;
+        totalLeetcodeSolved += solvedLeetcode;
 
-        const total_question = (contest.leetcode_question || 0) + (contest.codeforeces_question || 0); 
-        const solved_question = (contest.solved_codeforces_question || 0) + (contest.solved_leetcode_question || 0); 
+        const totalQuestions = (contest.leetcode_question || 0) + (contest.codeforeces_question || 0);
+        const solvedQuestions = solvedCodeforces + solvedLeetcode;
         
+        const date = new Date(contest.date);
+        const formattedDate = !isNaN(date.getTime()) ? date.toLocaleDateString() : 'N/A';
+
         return {
-          name: `Contest-${i + 1}`,
-          date: contest.date || 'N/A',
-          solved: `${solved_question}/${total_question}`, 
+          name: `Practice Contest #${i + 1}`,
+          date: formattedDate,
+          solved: `${solvedQuestions} / ${totalQuestions}`, 
           duration: contest.time_duration || 'N/A',
           status: 'Completed'
         };
-    });
+    }).reverse(); 
     
     return {
         contests: allContests,
         stats: {
-            total_question_solved: total_codeforces_solved + total_leetcode_solved,
-            total_leetcode_solved: total_leetcode_solved,
-            total_codeforces_solved: total_codeforces_solved,
-            total_contest: information_contest.total_contest || 0,
+            total_question_solved: totalCodeforcesSolved + totalLeetcodeSolved,
+            total_leetcode_solved: totalLeetcodeSolved,
+            total_codeforces_solved: totalCodeforcesSolved,
+            total_contest: userInfo.total_contest || 0,
         }
     }
-  }, [information_contest]);
+  }, [userInfo]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1500);
+    // Simulate data fetching
+    const timer = setTimeout(() => setIsLoading(false), 1200);
     return () => clearTimeout(timer);
   }, []);
 
@@ -270,10 +263,7 @@ const Dashboard: React.FC = () => {
         <main>
           <SkeletonCard type="profile" />
           <div className="stats-grid">
-            <SkeletonCard type="stat" />
-            <SkeletonCard type="stat" />
-            <SkeletonCard type="stat" />
-            <SkeletonCard type="stat" />
+            {[...Array(4)].map((_, i) => <SkeletonCard key={i} type="stat" />)}
           </div>
           <SkeletonCard type="history" />
         </main>
@@ -286,23 +276,23 @@ const Dashboard: React.FC = () => {
       <DashboardHeader onStartContest={handleStartContestClick} />
       <main>
         <UserProfile 
-            username={information_contest.name || 'User'}
-            email={information_contest.email || 'user@example.com'}
+            username={userInfo.name || 'Coding Enthusiast'}
+            email={userInfo.email || 'user@example.com'}
         />
         
         <div className="stats-grid">
-          <StatCard icon={<FaCode />} title="Total Questions" mainValue={String(dashboardData.stats.total_question_solved)} subText="Total Solved" colorClass="blue" />
-          <StatCard icon={<FaLaptopCode />} title="LeetCode Questions" mainValue={String(dashboardData.stats.total_leetcode_solved)} subText="Solved Leetcode Problems" colorClass="green" />
-          <StatCard icon={<FaLaptopCode />} title="Codeforces Questions" mainValue={String(dashboardData.stats.total_codeforces_solved)} subText="Solved Codeforces Problems" colorClass="orange" />
-          <StatCard icon={<FaCalendarAlt />} title="Total Contests" mainValue={String(dashboardData.stats.total_contest)} subText="Participated" colorClass="purple" />
+          <StatCard icon={<FaCode />} title="Total Questions Solved" mainValue={String(dashboardData.stats.total_question_solved)} subText="Across all platforms" colorClass="blue" />
+          <StatCard icon={<FaLaptopCode />} title="LeetCode Solved" mainValue={String(dashboardData.stats.total_leetcode_solved)} subText="Problems conquered" colorClass="green" />
+          <StatCard icon={<FaLaptopCode />} title="Codeforces Solved" mainValue={String(dashboardData.stats.total_codeforces_solved)} subText="Problems conquered" colorClass="orange" />
+          <StatCard icon={<FaCalendarAlt />} title="Contests Taken" mainValue={String(dashboardData.stats.total_contest)} subText="Total sessions" colorClass="purple" />
         </div>
 
         <ContestHistory contests={dashboardData.contests} />
       </main>
 
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-          <h2>Feature Not Available</h2>
-          <p>Starting a new contest is only available on desktop or laptop devices for a better experience.</p>
+          <h2>Desktop Recommended</h2>
+          <p>For the best coding experience, please start new contests on a desktop or laptop device.</p>
       </Modal>
     </div>
   );

@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { useNavigate, Link } from "react-router";
+import { useNavigate, Link } from "react-router"; // Use react-router-dom
+import { FiUser, FiMail, FiLock, FiLoader, FiAlertCircle } from 'react-icons/fi';
+
 import { type AppDispatch } from "../redux_state_manegemet/store";
 import { user_information_changer } from "../redux_state_manegemet/user_information";
-
-
-import styles from "./SignUp.module.css";
 import { sign_up_api } from "../keys/links";
+
+import styles from "./SignUp.module.css"; // Using CSS Modules
 
 function SignUp() {
     const [name, setName] = useState("");
@@ -20,52 +21,49 @@ function SignUp() {
     const navigate = useNavigate();
 
     const handleSignUp = async (event: React.FormEvent) => {
-        event.preventDefault(); 
+        event.preventDefault();
         setLoading(true);
         setError(null);
 
         try {
-    
-            const response = await axios.post(sign_up_api, {
-                name: name,
-                email: email,
-                password: password,
-            });
-
-         
+            const response = await axios.post(sign_up_api, { name, email, password });
             const { token, user } = response.data;
 
             if (token && user) {
-   
                 localStorage.setItem("authToken", token);
-
-       
                 dispatch(user_information_changer(user));
-
                 navigate("/dashboard");
             } else {
                 setError("Account created, but failed to log in automatically.");
             }
-
         } catch (err: any) {
-       
-            if (err.response && err.response.data && err.response.data.message) {
+            if (err.response?.data?.message) {
                 setError(err.response.data.message);
             } else {
                 setError("An unexpected error occurred. Please try again.");
             }
         } finally {
-            setLoading(false); 
+            setLoading(false);
         }
     };
 
     return (
         <div className={styles.signUpPage}>
-            <div className={styles.signUpContainer}>
-                <h1 className={styles.title}>Create Account</h1>
+            <div className={styles.signUpCard}>
+                <div className={styles.signUpCardHeader}>
+                    <h1 className={styles.signUpCardLogo}>AlgoDojo</h1>
+                    <p className={styles.signUpCardTitle}>Create an account to start your journey.</p>
+                </div>
+
                 <form onSubmit={handleSignUp}>
-                    <div className={styles.inputGroup}>
-                        <label htmlFor="name">Name</label>
+                    {error && (
+                        <div className={styles.errorMessage}>
+                            <FiAlertCircle />
+                            <span>{error}</span>
+                        </div>
+                    )}
+
+                    <div className={styles.formGroup}>
                         <input
                             id="name"
                             type="text"
@@ -75,9 +73,10 @@ function SignUp() {
                             required
                             disabled={loading}
                         />
+                        <FiUser className={styles.inputIcon} />
                     </div>
-                    <div className={styles.inputGroup}>
-                        <label htmlFor="email">Email</label>
+
+                    <div className={styles.formGroup}>
                         <input
                             id="email"
                             type="email"
@@ -87,9 +86,10 @@ function SignUp() {
                             required
                             disabled={loading}
                         />
+                        <FiMail className={styles.inputIcon} />
                     </div>
-                    <div className={styles.inputGroup}>
-                        <label htmlFor="password">Password</label>
+                    
+                    <div className={styles.formGroup}>
                         <input
                             id="password"
                             type="password"
@@ -99,18 +99,24 @@ function SignUp() {
                             required
                             disabled={loading}
                         />
+                        <FiLock className={styles.inputIcon} />
                     </div>
 
-    
-                    {error && <p className={styles.errorMessage}>{error}</p>}
-
-                    <button type="submit" className={styles.signUpButton} disabled={loading}>
-                        {loading ? "Creating Account..." : "Sign Up"}
+                    <button type="submit" className={styles.btn} disabled={loading}>
+                        {loading ? (
+                            <>
+                                <FiLoader className={styles.spinner} />
+                                <span>Creating Account...</span>
+                            </>
+                        ) : (
+                            "Create Account"
+                        )}
                     </button>
                 </form>
+
                 <div className={styles.linksContainer}>
                     <p>Already have an account?</p>
-                    <Link to="/login" className={styles.link}>Login Here</Link>
+                    <Link to="/login" className={styles.link}>Login</Link>
                 </div>
             </div>
         </div>

@@ -1,125 +1,177 @@
-/* Main container for the whole page */
-.loginPage {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #f0f2f5; /* A light grey background makes the white card pop */
-    padding: 20px;
+/* =================================================================== */
+/* LOGIN PAGE - FULLY SCOPED STYLES                                    */
+/* =================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;500&display=swap');
+
+/* --- Spinner Animation --- */
+@keyframes login-spinner-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* The white login card */
-.loginContainer {
-    background-color: #ffffff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 400px;
-    box-sizing: border-box;
-    text-align: center;
+/* 
+ * Main Page Wrapper 
+ * This is the top-level class that scopes everything.
+*/
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* Uses the gradient from your landing page for consistency */
+  background: linear-gradient(135deg, #4A90E2, #50E3C2); 
+  padding: 1rem;
+  font-family: 'Roboto', sans-serif;
 }
 
-.title {
-    margin-bottom: 24px;
-    color: #333;
-    font-size: 2rem;
-    font-weight: 600;
+/*
+ * The Login Card Itself
+ * All subsequent rules are nested under .login-page
+*/
+.login-page .login-card {
+  background-color: #ffffff;
+  padding: 2.5rem 3rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  animation: login-card-float-up 0.6s ease-out;
 }
 
-.inputGroup {
-    margin-bottom: 20px;
-    text-align: left;
+@keyframes login-card-float-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.inputGroup label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #555;
+.login-page .login-card__header {
+  margin-bottom: 2rem;
 }
 
-.inputGroup input {
-    width: 100%;
-    padding: 12px 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1rem;
-    box-sizing: border-box;
-    transition: border-color 0.3s ease;
+.login-page .login-card__logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4A90E2; /* Primary Color */
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0.5rem;
 }
 
-.inputGroup input:focus {
-    outline: none;
-    border-color: #007bff; /* Highlight color on focus */
+.login-page .login-card__title {
+  color: #34495e; /* Text Color */
+  font-size: 1.1rem;
 }
 
-.loginButton {
-    width: 100%;
-    padding: 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.1s ease;
-    margin-top: 10px;
+/* --- Form Styles --- */
+.login-page .form-group {
+  margin-bottom: 1.5rem;
+  position: relative;
 }
 
-.loginButton:hover:not(:disabled) {
-    background-color: #0056b3;
+.login-page .input-icon {
+  position: absolute;
+  left: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #a0aec0;
+  transition: color 0.3s ease;
 }
 
-.loginButton:active:not(:disabled) {
-    transform: scale(0.98);
+.login-page .form-group input {
+  width: 100%;
+  padding: 1rem 1rem 1rem 3rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-.loginButton:disabled {
-    background-color: #a0c3e6;
-    cursor: not-allowed;
+.login-page .form-group input:focus {
+  outline: none;
+  border-color: #4A90E2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
 }
 
-.errorMessage {
-    color: #d93025; /* A standard error red */
-    background-color: #fbeae9;
-    border: 1px solid #f9d3d0;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 20px;
-    font-size: 0.9rem;
+.login-page .form-group input:focus + .input-icon {
+  color: #4A90E2;
 }
 
-.linksContainer {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.9rem;
+/* --- Button & Messages --- */
+.login-page .btn {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #4A90E2;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-top: 1rem;
 }
 
-.link {
-    color: #007bff;
-    text-decoration: none;
+.login-page .btn:hover:not(:disabled) {
+  background-color: #357ABD;
 }
 
-.link:hover {
-    text-decoration: underline;
+.login-page .btn:active:not(:disabled) {
+  transform: scale(0.98);
 }
 
-/* --- Responsive Design --- */
+.login-page .btn:disabled {
+  background-color: #a0c3e6;
+  cursor: not-allowed;
+}
+
+.login-page .spinner {
+  animation: login-spinner-spin 1s linear infinite;
+}
+
+.login-page .error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #e74c3c;
+  background-color: #fbeae9;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* --- Footer Links --- */
+.login-page .links-container {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.login-page .link {
+  color: #4A90E2;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  font-weight: 500;
+  transition: text-decoration 0.3s;
+}
+
+.login-page .link:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsive --- */
 @media (max-width: 480px) {
-    .loginContainer {
-        padding: 25px;
-    }
-
-    .title {
-        font-size: 1.8rem;
-    }
-
-    .linksContainer {
-        flex-direction: column;
-        gap: 10px;
-        align-items: center;
-    }
+  .login-page .login-card {
+    padding: 2rem 1.5rem;
+  }
 }

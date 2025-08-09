@@ -1,22 +1,21 @@
 import React from 'react';
-import './header.css';
 import { useNavigate } from 'react-router';
 
 const Header = () => {
-  const navigate = useNavigate() ;
+  const navigate = useNavigate();
   return (
     <header className="header">
-      <div className="logo">AlgoDojo</div>
-      <div className="auth-buttons">
-        <button className="login-btn" onClick={() => {
-          navigate("/login") ; 
-        }}>Login</button>
-        <button className="signup-btn" onClick={() => {
-          navigate("/signup") ; 
-        }}>Sign Up</button>
-      </div>
+      <div className="header__logo">AlgoDojo</div>
+      <nav className="header__nav-buttons">
+        <button className="btn btn--outline" onClick={() => navigate("/login")}>
+          Login
+        </button>
+        <button className="btn btn--primary" onClick={() => navigate("/signup")}>
+          Sign Up
+        </button>
+      </nav>
     </header>
   );
-}
+};
 
 export default Header;

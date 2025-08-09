@@ -1,5 +1,5 @@
 /* =================================================================== */
-/* LANDING PAGE STYLES - COMPLETE, SCOPED & FINAL                      */
+/* LANDING PAGE STYLES - ENHANCED RESPONSIVE VERSION                   */
 /* =================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;500&display=swap');
@@ -24,13 +24,13 @@
 }
 
 .landing-page h2 {
-  font-size: 2.8rem;
-  margin-bottom: 3rem;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  margin-bottom: clamp(2rem, 4vw, 3rem);
   text-align: center;
 }
 
 .landing-page section {
-  padding: 6rem 2rem;
+  padding: clamp(3rem, 8vw, 6rem) clamp(1rem, 4vw, 2rem);
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -42,36 +42,41 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 4rem;
+  padding: 1rem clamp(1rem, 4vw, 4rem);
   background-color: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   position: sticky;
   top: 0;
   z-index: 1000;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .landing-page .header__logo {
-  font-size: 1.8rem;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
   font-weight: 700;
   color: #4A90E2;
 }
 
 .landing-page .header__nav-buttons {
   display: flex;
-  gap: 1rem;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  flex-wrap: wrap;
 }
 
 /* =================================================================== */
 /* BUTTONS                                                             */
 /* =================================================================== */
 .landing-page .btn {
-  padding: 0.75rem 1.5rem;
+  padding: clamp(0.6rem, 1.5vw, 0.75rem) clamp(1rem, 3vw, 1.5rem);
   border-radius: 50px;
   font-weight: 500;
   cursor: pointer;
   border: 2px solid transparent;
   transition: all 0.3s ease;
-  font-size: 0.9rem;
+  font-size: clamp(0.8rem, 2vw, 0.9rem);
+  text-align: center;
+  white-space: nowrap;
 }
 
 .landing-page .btn:hover {
@@ -107,22 +112,23 @@
 .landing-page .hero {
   background: linear-gradient(135deg, #4A90E2, #50E3C2);
   color: #ffffff;
-  padding: 8rem 2rem;
+  padding: clamp(4rem, 12vw, 8rem) clamp(1rem, 4vw, 2rem);
   text-align: center;
   min-width: 100%;
 }
 
 .landing-page .hero__content h1 {
-  font-size: 3.5rem;
+  font-size: clamp(2.2rem, 7vw, 3.5rem);
   color: #ffffff;
   margin-bottom: 1rem;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+  line-height: 1.2;
 }
 
 .landing-page .hero__content p {
-  font-size: 1.25rem;
-  margin-bottom: 2.5rem;
-  max-width: 600px;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  margin-bottom: clamp(2rem, 4vw, 2.5rem);
+  max-width: min(600px, 90vw);
   margin-left: auto;
   margin-right: auto;
   opacity: 0.9;
@@ -131,30 +137,31 @@
 .landing-page .btn--cta {
   background-color: #ffffff;
   color: #4A90E2;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.2vw, 1.1rem);
   font-weight: 700;
-  padding: 1rem 2.5rem;
+  padding: clamp(0.8rem, 2vw, 1rem) clamp(1.5rem, 4vw, 2.5rem);
 }
 
 /* =================================================================== */
 /* WHY US SECTION                                                      */
 /* =================================================================== */
 .landing-page .why-us-section {
-  padding-bottom: 1.5rem;
+  padding-bottom: 2rem;
   max-width: none;
 }
 
 .landing-page .benefits-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+  gap: clamp(1.5rem, 3vw, 2rem);
   max-width: 1200px;
   margin: 0 auto;
+  padding: 0 clamp(1rem, 3vw, 2rem);
 }
 
 .landing-page .benefit-card {
-  background-color: #f7f9fc;
-  padding: 2.5rem;
+  background-color: #ffffff;
+  padding: clamp(2rem, 4vw, 2.5rem);
   border-radius: 12px;
   border: 1px solid #e5e7eb;
   text-align: left;
@@ -167,85 +174,92 @@
 }
 
 .landing-page .benefit-card__icon {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 4vw, 2.5rem);
   color: #4A90E2;
   margin-bottom: 1rem;
 }
 
-
 .landing-page .benefit-card h3 {
-  font-size: 1.4rem;
+  font-size: clamp(1.2rem, 2.5vw, 1.4rem);
   margin-bottom: 0.5rem;
+}
+
+.landing-page .benefit-card p {
+  font-size: clamp(0.9rem, 2vw, 1rem);
+  line-height: 1.6;
 }
 
 /* =================================================================== */
 /* FEATURES SECTION (Horizontal Layout)                                */
 /* =================================================================== */
 .landing-page .features-section {
-  padding: 4rem 1rem;
+  padding: clamp(3rem, 6vw, 4rem) clamp(0.5rem, 2vw, 1rem);
 }
 
 .landing-page .features-section__intro {
   text-align: center;
-  max-width: 700px;
-  margin: 0 auto 1rem auto;
+  max-width: min(700px, 90vw);
+  margin: 0 auto clamp(2rem, 4vw, 3rem) auto;
+  padding: 0 1rem;
 }
 
 .landing-page .features-section__subtitle {
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 2.2vw, 1.1rem);
   color: #34495e;
   line-height: 1.6;
 }
 
-
 .landing-page .features-section__card {
   display: flex;
   flex-direction: column;
-  max-width: 1100px;
+  max-width: min(1100px, 95vw);
   margin: 0 auto;
   overflow: hidden;
 }
 
 .landing-page .features-section__visual {
-  padding: 1.5rem;
-  /* border-bottom: 1px solid #e5e7eb; */
+  padding: clamp(1rem, 3vw, 1.5rem);
 }
 
 .landing-page .mockup-header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-.landing-page .mockup-dot { width: 12px; height: 12px; border-radius: 50%; }
-
+.landing-page .mockup-dot { 
+  width: clamp(8px, 2vw, 12px); 
+  height: clamp(8px, 2vw, 12px); 
+  border-radius: 50%; 
+}
 
 .landing-page .mockup-image-container {
-    max-width: 85%; 
-    margin: 1rem auto 0 auto; 
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 85%;
+  margin: 1rem auto 0 auto; 
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
 
 .landing-page .mockup-image-container img {
-    width: 100%;
-    height: auto;
-    display: block;
+  width: 100%;
+  height: auto;
+  display: block;
+  max-width: 100%;
 }
-
 
 .landing-page .features-section__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 2.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+  gap: clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(2rem, 4vw, 2.5rem) clamp(1rem, 3vw, 2rem);
 }
-
 
 .landing-page .feature-box {
   background-color: #ffffff;
-  padding: 3rem 2rem; /* CHANGED: Increased top/bottom padding to make the box taller */
+  padding: clamp(2rem, 4vw, 3rem) clamp(1.5rem, 3vw, 2rem);
   text-align: center;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
@@ -253,25 +267,26 @@
 }
 
 .landing-page .feature-box:hover {
-  transform: translateY(-5px);
+  transform: translateY(-10px);
   background-color: #ffffff;
   border-color: #d1d5db;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .landing-page .feature-box__icon {
-  font-size: 2.5rem;
+  font-size: clamp(2rem, 4vw, 2.5rem);
   color: #4A90E2;
   margin-bottom: 1.5rem;
   display: inline-block;
 }
 
 .landing-page .feature-box__title {
-  font-size: 1.25rem;
+  font-size: clamp(1.1rem, 2.5vw, 1.25rem);
   margin-bottom: 0.75rem;
 }
 
 .landing-page .feature-box__description {
-  font-size: 1rem;
+  font-size: clamp(0.9rem, 2vw, 1rem);
   line-height: 1.6;
   color: #34495e;
   margin: 0;
@@ -283,34 +298,204 @@
 .landing-page .footer {
   background-color: #2c3e50;
   color: #aeb9c5;
-  padding: 4rem 2rem;
+  padding: clamp(3rem, 6vw, 4rem) clamp(1rem, 4vw, 2rem);
   text-align: center;
   max-width: none;
 }
 
-.landing-page .footer__content { max-width: 1200px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
-.landing-page .footer__socials { display: flex; gap: 1.5rem; }
-.landing-page .footer__socials a { color: #ffffff; font-size: 1.5rem; transition: color 0.3s ease, transform 0.3s ease; }
-.landing-page .footer__socials a:hover { color: #50E3C2; transform: translateY(-3px); }
-.landing-page .footer__links a { color: #aeb9c5; text-decoration: none; margin: 0 1rem; transition: color 0.3s ease; }
-.landing-page .footer__links a:hover { color: #ffffff; }
-
-/* =================================================================== */
-/* RESPONSIVE MEDIA QUERIES                                            */
-/* =================================================================== */
-@media (max-width: 768px) {
-  .landing-page h2 { font-size: 2.2rem; }
-  .landing-page section { padding: 4rem 1.5rem; }
-  .landing-page .header { flex-direction: column; gap: 1rem; padding: 1rem 2rem; }
-  .landing-page .hero__content h1 { font-size: 2.8rem; }
-  .landing-page .hero__content p { font-size: 1.1rem; }
-  .landing-page .features-section__grid { padding: 2rem 1.5rem; }
+.landing-page .footer__content { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  gap: clamp(1rem, 3vw, 1.5rem); 
 }
 
+.landing-page .footer__socials { 
+  display: flex; 
+  gap: clamp(1rem, 3vw, 1.5rem); 
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.landing-page .footer__socials a { 
+  color: #ffffff; 
+  font-size: clamp(1.2rem, 3vw, 1.5rem); 
+  transition: color 0.3s ease, transform 0.3s ease; 
+}
+
+.landing-page .footer__socials a:hover { 
+  color: #50E3C2; 
+  transform: translateY(-3px); 
+}
+
+.landing-page .footer__links { 
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  gap: clamp(0.5rem, 2vw, 1rem); 
+}
+
+.landing-page .footer__links a { 
+  color: #aeb9c5; 
+  text-decoration: none; 
+  padding: 0.5rem clamp(0.5rem, 2vw, 1rem); 
+  transition: color 0.3s ease; 
+  font-size: clamp(0.9rem, 2vw, 1rem);
+}
+
+.landing-page .footer__links a:hover { 
+  color: #ffffff; 
+}
+
+/* =================================================================== */
+/* ENHANCED RESPONSIVE MEDIA QUERIES                                   */
+/* =================================================================== */
+
+/* Large tablets and small desktops */
+@media (max-width: 1024px) {
+  .landing-page .header {
+    padding: 1rem 2rem;
+  }
+  
+  .landing-page .benefits-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  .landing-page .features-section__grid {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+  .landing-page .header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .landing-page .header__nav-buttons {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .landing-page .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .landing-page .features-section__grid {
+    grid-template-columns: 1fr;
+    padding: 2rem 1rem;
+  }
+  
+  .landing-page .mockup-image-container {
+    max-width: 95%;
+  }
+}
+
+/* Mobile devices */
 @media (max-width: 480px) {
-  .landing-page h2 { font-size: 1.8rem; }
-  .landing-page section { padding: 3rem 1rem; }
-  .landing-page .hero__content h1 { font-size: 2.2rem; }
-  .landing-page .hero__content p { font-size: 1rem; }
-  .landing-page .footer__links { display: flex; flex-direction: column; gap: 0.5rem; }
+  .landing-page section {
+    padding: 2rem 1rem;
+  }
+  
+  .landing-page .header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .landing-page .header__nav-buttons {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.5rem;
+  }
+  
+  .landing-page .btn {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .landing-page .hero {
+    padding: 3rem 1rem;
+  }
+  
+  .landing-page .benefit-card,
+  .landing-page .feature-box {
+    padding: 1.5rem;
+  }
+  
+  .landing-page .footer__links {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .landing-page .footer__socials {
+    gap: 1rem;
+  }
+}
+
+/* Very small screens */
+@media (max-width: 360px) {
+  .landing-page .hero__content h1 {
+    font-size: 1.8rem;
+  }
+  
+  .landing-page .btn--cta {
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+  }
+  
+  .landing-page .benefit-card__icon,
+  .landing-page .feature-box__icon {
+    font-size: 2rem;
+  }
+}
+
+/* High DPI / Retina displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .landing-page .mockup-image-container img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .landing-page .hero {
+    padding: 2rem 1rem;
+  }
+  
+  .landing-page .hero__content h1 {
+    font-size: 2rem;
+  }
+  
+  .landing-page section {
+    padding: 2rem 1rem;
+  }
+}
+
+/* Container queries for more advanced responsive behavior */
+@container (max-width: 600px) {
+  .landing-page .benefits-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Print styles */
+@media print {
+  .landing-page .header,
+  .landing-page .footer {
+    display: none;
+  }
+  
+  .landing-page .hero {
+    background: none;
+    color: #000;
+  }
+  
+  .landing-page .btn {
+    display: none;
+  }
 }

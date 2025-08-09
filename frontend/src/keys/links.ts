@@ -20,3 +20,7 @@ export const sign_up_api = `${BACKEND_URL}/sign_up`;
 export const validating_auth_token = `${BACKEND_URL}/validating_auth`;
 
 export const saving_contest = `${BACKEND_URL}/adding_contest_inforamtion` ;
+
+export const forgot_password = `${BACKEND_URL}/forgot_password` ; 
+
+export const verify_password = `${BACKEND_URL}/verification` ; 

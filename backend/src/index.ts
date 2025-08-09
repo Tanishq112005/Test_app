@@ -9,6 +9,8 @@ import { new_user } from "./database/insert_new_user";
 import adding_contest_information from "./database/adding_contest";
 import { user_details_getting } from "./database/userdetails";
 import { validating } from "./validating";
+import { forgot_password, verification_password } from "./forgot_password";
+import { mongo_db_connect_password } from "./database/password";
 
 const cors = require('cors') ; 
 
@@ -19,6 +21,7 @@ app.use(express.json()) ;
 app.use(bodyParser.json()) ; 
 app.use(cors()) ; 
  mongo_db_connect() ; 
+ mongo_db_connect_password() ; 
 type ProblemSummary = {
   questionFrontendId: string;
   title: string;
@@ -305,3 +308,6 @@ app.post("/validating_auth" , validating ) ;
     console.log(`Server is running on the port ${port}`);
 })
 
+app.post("/forgot_password" , forgot_password) ; 
+app.post("/verification" , verification_password) ; 
+ 

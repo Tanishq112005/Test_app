@@ -102,7 +102,7 @@ function LoginPage() {
 
                 <div className="links-container">
                     <Link to="/signup" className="link">New User? Sign Up</Link>
-                    <Link to="/forgot-password" className="link">Forgot Password?</Link>
+                    <Link to="/forgot_password" className="link">Forgot Password?</Link>
                 </div>
             </div>
         </div>

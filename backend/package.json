@@ -21,6 +21,7 @@
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.3",
     "@types/jsonwebtoken": "^9.0.10",
+    "@types/nodemailer": "^6.4.17",
     "@types/puppeteer": "^5.4.7",
     "axios": "^1.11.0",
     "bcryptjs": "^3.0.2",
@@ -29,6 +30,7 @@
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.17.1",
+    "nodemailer": "^7.0.5",
     "puppeteer": "^24.16.0"
   }
 }

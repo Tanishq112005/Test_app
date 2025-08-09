@@ -21,6 +21,8 @@ import Dashboard from './dashboard/components/dashboard.tsx';
 import SignUp from './auth/sign_up.tsx';
 import SummaryPage from './summary/Summarypage.tsx';
 import Landing_Page from './landing_page/landing_page.tsx';
+import ForgotPassword from './auth/forgot_password.tsx';
+import Verification from './auth/verifcation_password.tsx';
 
 
 
@@ -67,6 +69,14 @@ const router = createBrowserRouter([
      {
       path : "/signup" , 
       element : <SignUp></SignUp>
+     } , 
+     {
+      path : "/forgot_password" , 
+      element : <ForgotPassword></ForgotPassword>
+     } , 
+     {
+      path : "/verification" , 
+      element : <Verification></Verification>
      }
   ]);
 

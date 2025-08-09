@@ -20,7 +20,7 @@ import Login_Page from './auth/login.tsx';
 import Dashboard from './dashboard/components/dashboard.tsx';
 import SignUp from './auth/sign_up.tsx';
 import SummaryPage from './summary/Summarypage.tsx';
-import QuestionDataLoader from './component/QuestionDataLoader.tsx';
+
 
 
 const router = createBrowserRouter([

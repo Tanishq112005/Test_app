@@ -11,7 +11,7 @@ const HeroSection = () => {
         <p>Practice with timed tests and questions from LeetCode & Codeforces to master data structures and algorithms.</p>
         <button className="cta-button" onClick={() => {
            navigate("/signup");
-        }}>Start Your Free Test Now</button>
+        }}>Start Your Test Now</button>
       </div>
     </section>
   );

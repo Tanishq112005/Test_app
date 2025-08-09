@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import './ConfirmationPage.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { type AppDispatch, type RootState } from '../redux_state_manegemet/store';
@@ -7,7 +7,11 @@ import Coading_language from '../test_page/Codeeditor/Coding'; // <-- Import the
 import { useNavigate } from 'react-router';
 import { full_screen } from '../redux_state_manegemet/full_screen';
 
-
+interface props_rule_item {
+    icon : any ; 
+    title : any;
+    children : any ;
+}
 const ScreenIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
 );
@@ -27,7 +31,7 @@ const FullScreenIcon = () => (
 const FileCheckIcon = () => (
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m9 15 2 2 4-4"></path></svg>
 );
-const RuleItem = ({ icon , title, children }) => (
+const RuleItem = ({ icon  , title, children } : props_rule_item) => (
     <div className="rule-item">
         <div className="rule-icon">{icon}</div>
         <div className="rule-content">

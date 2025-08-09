@@ -6,7 +6,7 @@ const Header = () => {
   const navigate = useNavigate() ;
   return (
     <header className="header">
-      <div className="logo">DSA-Test-App</div>
+      <div className="logo">AlgoDojo</div>
       <div className="auth-buttons">
         <button className="login-btn" onClick={() => {
           navigate("/login") ; 

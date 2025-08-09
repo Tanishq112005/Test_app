@@ -1,12 +1,9 @@
-// src/pages/SummaryPage.tsx
 
-import React from 'react';
-import './SummaryPage.css'; // The new CSS file is below
+import './SummaryPage.css'; 
 
-import Side_bar from '../test_page/side_bar'; // Using your new sidebar
+import Side_bar from '../test_page/side_bar'; 
 import QuestionDisplay from '../test_page/questiondisplay';
 import Editor_page from './Editior_page';
-import Link_generator from './link_generator';
 import Question_solved_or_not from './question_solved_or_not';
 import Result_Saving from './submit_button_clicking';
 import link_generator from './link_generator';

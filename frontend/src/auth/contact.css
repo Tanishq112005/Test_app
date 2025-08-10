@@ -1,0 +1,240 @@
+/* =================================================================== */
+/* CONTACT PAGE - FULLY SCOPED STYLES                                 */
+/* =================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&family=Roboto:wght@400;500&display=swap');
+
+/* --- Hover and Pulse Animations --- */
+@keyframes contact-pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@keyframes contact-icon-bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-3px); }
+  60% { transform: translateY(-1px); }
+}
+
+/*
+ * Main Page Wrapper
+ * This is the top-level class that scopes everything.
+ */
+.contact-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* Uses the same gradient from your login page for consistency */
+  background: linear-gradient(135deg, #4A90E2, #50E3C2);
+  
+  padding: 1rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+/*
+ * The Contact Card Itself
+ * All subsequent rules are nested under .contact-page
+ */
+.contact-page .contact-card {
+  background-color: #ffffff;
+  padding: 2.5rem 3rem;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  animation: contact-card-float-up 0.6s ease-out;
+}
+
+@keyframes contact-card-float-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.contact-page .contact-card__header {
+  margin-bottom: 2rem;
+}
+
+.contact-page .contact-card__logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #4A90E2; /* Primary Color */
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 0.5rem;
+}
+
+.contact-page .contact-card__title {
+  color: #34495e; /* Text Color */
+  font-size: 1.1rem;
+}
+
+/* --- Contact Info Styles --- */
+.contact-page .contact-info {
+  margin-bottom: 2rem;
+}
+
+.contact-page .contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.3s ease;
+  text-align: left;
+}
+
+.contact-page .contact-item:hover {
+  background-color: #f1f5f9;
+  border-color: #4A90E2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.15);
+}
+
+.contact-page .contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #4A90E2;
+  color: #ffffff;
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.contact-page .contact-item:hover .contact-icon {
+  animation: contact-icon-bounce 0.6s ease;
+  background-color: #357ABD;
+}
+
+.contact-page .contact-details {
+  flex: 1;
+}
+
+.contact-page .contact-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4A90E2;
+  margin: 0 0 0.25rem 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contact-page .contact-value {
+  font-size: 1rem;
+  color: #34495e;
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --- Button Styles --- */
+.contact-page .contact-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  flex-direction: column;
+}
+
+.contact-page .btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Roboto', sans-serif;
+}
+
+.contact-page .btn-primary {
+  background-color: #4A90E2;
+  color: #ffffff;
+}
+
+.contact-page .btn-primary:hover {
+  background-color: #357ABD;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.3);
+}
+
+.contact-page .btn-secondary {
+  background-color: #50E3C2;
+  color: #ffffff;
+}
+
+.contact-page .btn-secondary:hover {
+  background-color: #3dd5b4;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(80, 227, 194, 0.3);
+}
+
+.contact-page .btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* --- Footer Links --- */
+.contact-page .links-container {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.contact-page .link {
+  color: #4A90E2;
+  text-decoration: none;
+  margin: 0 0.5rem;
+  font-weight: 500;
+  transition: text-decoration 0.3s;
+}
+
+.contact-page .link:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 640px) {
+  .contact-page .contact-card {
+    padding: 2rem 1.5rem;
+    max-width: 100%;
+  }
+  
+  .contact-page .contact-actions {
+    flex-direction: column;
+  }
+  
+  .contact-page .contact-item {
+    padding: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-page .contact-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .contact-page .contact-icon {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .contact-page .contact-card__logo {
+    font-size: 1.75rem;
+  }
+}

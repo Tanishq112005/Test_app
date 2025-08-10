@@ -11,7 +11,7 @@ const Footer = () => {
           <a href="https://x.com/tanishq__jain" aria-label="Twitter"><FaTwitter /></a>
         </div>
         <div className="footer__links">
-          <a href="#">Contact</a>
+        <a href="/contact">Contact Us</a>
         </div>
         <p>© {new Date().getFullYear()} AlgoDojo. All rights reserved.</p>
       </div>

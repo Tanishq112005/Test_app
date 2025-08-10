@@ -23,6 +23,7 @@ import SummaryPage from './summary/Summarypage.tsx';
 import Landing_Page from './landing_page/landing_page.tsx';
 import ForgotPassword from './auth/forgot_password.tsx';
 import Verification from './auth/verifcation_password.tsx';
+import ContactPage from './auth/contact.tsx';
 
 
 
@@ -77,6 +78,10 @@ const router = createBrowserRouter([
      {
       path : "/verification" , 
       element : <Verification></Verification>
+     } , 
+     {
+      path : "/contact" , 
+      element : <ContactPage></ContactPage>
      }
   ]);
 

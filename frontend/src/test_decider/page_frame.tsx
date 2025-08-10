@@ -106,7 +106,19 @@ function PageFrame() {
                     </div>
                     <div className="form-group">
                         <label htmlFor="codeforcesRating" className="form-label">Codeforces Question Rating</label>
-                        <input type="number" id="codeforcesRating" className="form-input" placeholder="e.g., 1400" value={codeforcesRating} onChange={(e) => setCodeforcesRating(e.target.value)} />
+                        <input type="number" id="codeforcesRating" className="form-input" placeholder="e.g. , 1400" value={codeforcesRating} onChange={(e) => 
+                           { if(parseInt(e.target.value) <= 800){
+                                const value = 800 ; 
+                                
+                                setCodeforcesRating(value.toString()) ; 
+                            }
+                            else {
+                                let b = parseInt(e.target.value) ; 
+                                b = Math.ceil(b / 100) ;
+                                b = b * 100 ; 
+                                setCodeforcesRating(b.toString())
+                            }
+                    }} />
                     </div>
                     <div className="form-group">
                         <label htmlFor="leetcodeDifficulty" className="form-label">LeetCode Question Difficulty</label>

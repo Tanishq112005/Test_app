@@ -20,6 +20,7 @@ import { jwtDecode } from 'jwt-decode';
 import axios from 'axios';
 import { user_information_changer } from '../../redux_state_manegemet/user_information'; // Corrected path
 import { finding_user } from '../../keys/links';
+import { pagination } from '../../keys/pagination';
 
 
 
@@ -52,7 +53,7 @@ function getInitials(name: string): string {
     return name.substring(0, 2).toUpperCase();
 }
 
-// SUB-COMPONENTS (These are well-written and remain unchanged)
+
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null;
@@ -138,7 +139,7 @@ const StatCard: React.FC<StatCardProps> = ({ icon, title, mainValue, subText, co
   
 const ContestHistory: React.FC<{ contests: Contest[] }> = ({ contests }) => {
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = pagination;
   const totalPages = Math.ceil(contests.length / itemsPerPage);
 
   const currentContests = contests.slice(
@@ -271,14 +272,16 @@ const Dashboard: React.FC = () => {
         totalCodeforcesSolved += solvedCodeforces;
         totalLeetcodeSolved += solvedLeetcode;
 
-        const totalQuestions = (contest.leetcode_question || 0) + (contest.codeforeces_question || 0);
+        const totalQuestions = contest.total_question ;
         const solvedQuestions = solvedCodeforces + solvedLeetcode;
         
         const date = new Date(contest.date);
         const formattedDate = !isNaN(date.getTime()) ? date.toLocaleDateString() : 'N/A';
-
+        console.log(i+1) ; 
+        console.log(totalQuestions) ; 
         return {
           name: `Practice Contest #${i + 1}`,
+          date : contest.date ,
           solved: `${solvedQuestions} / ${totalQuestions}`, 
           duration: contest.time_duration || 'N/A',
           status: 'Completed'

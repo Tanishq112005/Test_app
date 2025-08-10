@@ -1,4 +1,4 @@
-// /routes/auth.js (or your backend file)
+
 
 import bcrypt from "bcryptjs";
 import { User } from "./database/database";
@@ -6,12 +6,11 @@ import { db_password } from "./database/password";
 import { company_mail, company_password } from "./keys";
 const nodemailer = require('nodemailer');
 
-// A more reliable way to generate a 6-digit number
 function generateOTP() {
     return Math.floor(100000 + Math.random() * 900000);
 }
 
-// FORGOT PASSWORD ENDPOINT
+
 export async function forgot_password(req : any, res : any) {
     const { email } = req.body;
     try {

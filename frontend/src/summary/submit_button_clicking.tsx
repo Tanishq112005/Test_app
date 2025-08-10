@@ -55,7 +55,13 @@ function Result_Saving() {
             solved_leetcode++;
           }
         });
-
+         let f = codeforces_quesion.length + leetcode_question.length ;
+         const now = new Date();
+         const year = now.getFullYear();
+         const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are 0-indexed
+        const day = String(now.getDate()).padStart(2, '0'); 
+         const formattedDate = `${year}-${month}-${day}`; 
+        
         const dataSendingResponse = await axios.post(saving_contest, {
           name,
           email,
@@ -65,7 +71,9 @@ function Result_Saving() {
           codeforces_question: codeforces_quesion.length,
           leetcode_question: leetcode_question.length,
           solved_codeforces_question: solved_codeforces,
-          solved_leetcode_question: solved_leetcode
+          solved_leetcode_question: solved_leetcode ,
+          total_question : f ,
+          date : formattedDate
         });
         
         // 5. Handle success, update user info in Redux, and navigate

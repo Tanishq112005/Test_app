@@ -10,7 +10,9 @@ async function adding_contest_information(req: any, res: any, next: any) {
     leetcode_question,
     solved_leetcode_question,
     rating_leetcode,
-    solved_codeforces_question
+    solved_codeforces_question,
+    total_question ,
+    date 
   } = req.body;
 
   try {
@@ -23,6 +25,7 @@ async function adding_contest_information(req: any, res: any, next: any) {
     }
 
     const newContest = {
+      total_question, 
       time_duration,
       codeforces_question,
       leetcode_question,
@@ -30,6 +33,8 @@ async function adding_contest_information(req: any, res: any, next: any) {
       rating_leetcode,
       solved_codeforces_question,
       solved_leetcode_question,
+      date : date
+
     };
 
     const updatedUser = await User.findOneAndUpdate(

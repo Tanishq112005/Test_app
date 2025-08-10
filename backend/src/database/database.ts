@@ -2,6 +2,7 @@ import { mongo_db } from "../keys";
 const mongoose = require('mongoose');
 
 const contestSchema = new mongoose.Schema({
+  total_question : Number ,
   time_duration: Number,
   codeforces_question: Number,
   leetcode_question: Number,
@@ -9,7 +10,7 @@ const contestSchema = new mongoose.Schema({
   rating_leetcode: String,
   solved_codeforces_question: Number,
   solved_leetcode_question: Number,
-  date : Date
+  date : String
 });
 
 const userSchema = new mongoose.Schema({

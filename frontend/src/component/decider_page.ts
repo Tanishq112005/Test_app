@@ -52,7 +52,7 @@ async function decider(
 
   console.log("Decider: Starting process...");
 
-
+  
   console.log("Decider: Requesting CF problem list for rating:", codeforces_rating);
   const cfListRes = await axios.post(codeforces_get_question_list, {
     rating: codeforces_rating

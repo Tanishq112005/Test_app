@@ -27,6 +27,9 @@ function PageFrame() {
 
         console.log("--- Form submitted. Starting handleSubmit. ---");
 
+        // --- Start of Enhanced Validation ---
+
+        // 1. Check if all fields are filled
         if (
             !totalQuestions || !testDuration || !codeforcesQuestions ||
             !leetcodeQuestions || !codeforcesRating || !leetcodeDifficulty
@@ -36,22 +39,42 @@ function PageFrame() {
             return;
         }
 
+        const totalNum = parseInt(totalQuestions, 10);
+        const cfNum = parseInt(codeforcesQuestions, 10);
+        const lcNum = parseInt(leetcodeQuestions, 10);
+
+        // 2. Check for the minimum 1-1 requirement
+        if (cfNum < 1 || lcNum < 1) {
+            alert("Error: You must request at least one Codeforces and one LeetCode question.");
+            console.error("Validation failed: Minimum question count not met.");
+            return;
+        }
+
+        // 3. Check if the sum of parts equals the total
+        if (totalNum !== cfNum + lcNum) {
+            alert(`Error: The sum of Codeforces questions (${cfNum}) and LeetCode questions (${lcNum}) must equal the total number of questions (${totalNum}).`);
+            console.error("Validation failed: Question counts do not add up.");
+            return;
+        }
+
+        // --- End of Enhanced Validation ---
+
+
         navigate("/loader");
 
-
-        dispatch(total_question_changer(parseInt(totalQuestions)));
-        dispatch(question_of_reducer(parseInt(codeforcesQuestions)));
-        dispatch(setcodeforces_rating(parseInt(codeforcesRating)));
+        // Dispatch actions to Redux store
+        dispatch(total_question_changer(totalNum));
+        dispatch(question_of_reducer(cfNum));
+        dispatch(setcodeforces_rating(parseInt(codeforcesRating, 10)));
         dispatch(setLeetcodeQuestions_type(leetcodeDifficulty));
-        dispatch(setLeetcodeQuestions_number(parseInt(leetcodeQuestions)));
-        dispatch(total_duration(parseInt(testDuration)));
-
+        dispatch(setLeetcodeQuestions_number(lcNum));
+        dispatch(total_duration(parseInt(testDuration, 10)));
 
         const options = {
-            total_question: parseInt(totalQuestions),
-            codeforces_question: parseInt(codeforcesQuestions),
-            codeforces_rating: parseInt(codeforcesRating),
-            leetcode_question: parseInt(leetcodeQuestions),
+            total_question: totalNum,
+            codeforces_question: cfNum,
+            codeforces_rating: parseInt(codeforcesRating, 10),
+            leetcode_question: lcNum,
             leetcode_type: leetcodeDifficulty,
         };
 
@@ -59,13 +82,12 @@ function PageFrame() {
 
         try {
             const { codeforces_questions, leetcode_questions } = await decider(options);
-            
+
             console.log("Decider function successful. Received questions.");
 
-    
-            if (codeforces_questions.length === 0 || leetcode_questions.length === 0) {
+            if (codeforces_questions.length < cfNum || leetcode_questions.length < lcNum) {
                 alert("Could not fetch the required number of questions. Please try different criteria (e.g., a more common rating or difficulty).");
-                navigate("/");
+                navigate("/dashboard");
                 return;
             }
 
@@ -73,12 +95,11 @@ function PageFrame() {
             dispatch(codeforces_question_type(codeforces_questions));
 
             navigate("/confirmation_page");
-        }
-        catch (err) {
+        } catch (err) {
             console.error("!!! CRITICAL ERROR caught in handleSubmit !!!");
             console.error("The 'decider' function failed. See detailed error below:", err);
             alert("Failed to generate the test. Please check the developer console for errors and try again.");
-            navigate("/");
+            navigate("/dashboard");
         }
     };
 
@@ -87,38 +108,39 @@ function PageFrame() {
             <form className="form-card" onSubmit={handleSubmit}>
                 <h1 className="form-header">Enter Question Details</h1>
                 <div className="form-body">
-                  
                     <div className="form-group">
                         <label htmlFor="totalQuestions" className="form-label">Total Number of Questions</label>
-                        <input type="number" id="totalQuestions" className="form-input" placeholder="e.g., 4" value={totalQuestions} onChange={(e) => setTotalQuestions(e.target.value)} />
+                        <input type="number" id="totalQuestions" className="form-input" placeholder="e.g., 4" value={totalQuestions} onChange={(e) => setTotalQuestions(e.target.value)} min="2" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="testDuration" className="form-label">Test Duration (minutes)</label>
-                        <input type="number" id="testDuration" className="form-input" placeholder="e.g., 60" value={testDuration} onChange={(e) => setTestDuration(e.target.value)} />
+                        <input type="number" id="testDuration" className="form-input" placeholder="e.g., 60" value={testDuration} onChange={(e) => setTestDuration(e.target.value)} min="1" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="codeforcesQuestions" className="form-label">Number of Codeforces Questions</label>
-                        <input type="number" id="codeforcesQuestions" className="form-input" placeholder="e.g., 2" value={codeforcesQuestions} onChange={(e) => setCodeforcesQuestions(e.target.value)} />
+                        {/* CHANGE: Added min="1" attribute */}
+                        <input type="number" id="codeforcesQuestions" className="form-input" placeholder="e.g., 2" value={codeforcesQuestions} onChange={(e) => setCodeforcesQuestions(e.target.value)} min="1" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="leetcodeQuestions" className="form-label">Number of LeetCode Questions</label>
-                        <input type="number" id="leetcodeQuestions" className="form-input" placeholder="e.g., 2" value={leetcodeQuestions} onChange={(e) => setLeetcodeQuestions(e.target.value)} />
+                        {/* CHANGE: Added min="1" attribute */}
+                        <input type="number" id="leetcodeQuestions" className="form-input" placeholder="e.g., 2" value={leetcodeQuestions} onChange={(e) => setLeetcodeQuestions(e.target.value)} min="1" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="codeforcesRating" className="form-label">Codeforces Question Rating</label>
-                        <input type="number" id="codeforcesRating" className="form-input" placeholder="e.g. , 1400" value={codeforcesRating} onChange={(e) => 
-                           { if(parseInt(e.target.value) <= 800){
-                                const value = 800 ; 
-                                
-                                setCodeforcesRating(value.toString()) ; 
+                        <input type="number" id="codeforcesRating" className="form-input" placeholder="e.g. , 1400" value={codeforcesRating} onChange={(e) => {
+                            if (e.target.value === '') {
+                                setCodeforcesRating('');
+                                return;
                             }
-                            else {
-                                let b = parseInt(e.target.value) ; 
-                                b = Math.ceil(b / 100) ;
-                                b = b * 100 ; 
-                                setCodeforcesRating(b.toString())
+                            const numericValue = parseInt(e.target.value, 10);
+                            if (numericValue <= 800) {
+                                setCodeforcesRating("800");
+                            } else {
+                                let b = Math.ceil(numericValue / 100) * 100;
+                                setCodeforcesRating(b.toString());
                             }
-                    }} />
+                        }} step="100" min="800" />
                     </div>
                     <div className="form-group">
                         <label htmlFor="leetcodeDifficulty" className="form-label">LeetCode Question Difficulty</label>

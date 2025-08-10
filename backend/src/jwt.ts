@@ -15,6 +15,7 @@ interface UserPayload {
     id: string;
     name: string;
     email: string;
+    password : string;
 }
 
 
@@ -23,6 +24,7 @@ export function generateToken(user: UserPayload): string {
         id: user.id,
         name: user.name,
         email: user.email,
+        password : user.password 
     };
  
  

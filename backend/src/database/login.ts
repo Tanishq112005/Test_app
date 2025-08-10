@@ -19,11 +19,12 @@ export async function login(req: Request, res: Response) {
             return res.status(401).json({ message: "Invalid credentials." });
         }
 
-
+       
         const userForToken = {
             id: user._id.toString(),
             name: user.name,
-            email: user.email
+            email: user.email , 
+            password : user.password
         };
         const token = generateToken(userForToken);
 

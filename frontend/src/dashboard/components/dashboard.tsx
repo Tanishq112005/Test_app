@@ -1,3 +1,5 @@
+
+
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router'; 
 import './Dashboard.css';
@@ -12,8 +14,13 @@ import {
   FaChevronRight,
   FaCheckCircle,
 } from 'react-icons/fa';
-import { useSelector } from 'react-redux';
-import type { RootState } from '../../redux_state_manegemet/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { type AppDispatch, type RootState } from  '../../redux_state_manegemet/store'
+import { jwtDecode } from 'jwt-decode';
+import axios from 'axios';
+import { user_information_changer } from '../../redux_state_manegemet/user_information'; // Corrected path
+import { finding_user } from '../../keys/links';
+
 
 
 interface Contest {
@@ -45,7 +52,7 @@ function getInitials(name: string): string {
     return name.substring(0, 2).toUpperCase();
 }
 
-
+// SUB-COMPONENTS (These are well-written and remain unchanged)
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
     if (!isOpen) return null;
@@ -77,7 +84,6 @@ const SkeletonCard: React.FC<{ type: 'profile' | 'stat' | 'history' }> = ({ type
   return <div className="card skeleton skeleton-card" />;
 };
 
-
 const DashboardHeader: React.FC<{ onStartContest: () => void }> = ({ onStartContest }) => (
     <header className="dashboard-header">
       <div className="header-title">
@@ -93,6 +99,7 @@ const DashboardHeader: React.FC<{ onStartContest: () => void }> = ({ onStartCont
 const UserProfile: React.FC<{ username: string, email: string }> = ({ username, email }) => {
      const navigate = useNavigate();
     const handleLogout = () => {
+      // FIX: Use consistent key 'authToken'
       localStorage.removeItem('authToken');
       navigate("/");
     }
@@ -192,13 +199,52 @@ const ContestHistory: React.FC<{ contests: Contest[] }> = ({ contests }) => {
 
 
 
+
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch<AppDispatch>();
+  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
   const userInfo = useSelector((state: RootState) => state.user_inforamtion.value);
 
+ 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const authToken = localStorage.getItem('authToken');
+
+      
+        if (!authToken) {
+          navigate('/login');
+          return;
+        }
+
+        
+        const decodedToken: { email: string } = jwtDecode(authToken);
+        
+     
+        const response = await axios.post(finding_user, {
+          email: decodedToken.email
+        });
+
+        dispatch(user_information_changer(response.data));
+
+      } catch (error) {
+        console.error("Failed to fetch user data or token is invalid:", error);
+    
+        localStorage.removeItem('authToken');
+        navigate('/login');
+      } finally {
+   
+        setIsLoading(false);
+      }
+    };
+
+    fetchUserData();
+ 
+  }, [dispatch, navigate]);
+  
   const handleStartContestClick = () => {
     if (isConsideredMobile()) {
       setIsModalOpen(true);
@@ -213,6 +259,7 @@ const Dashboard: React.FC = () => {
         stats: { total_question_solved: 0, total_leetcode_solved: 0, total_codeforces_solved: 0, total_contest: 0 }
     };
     
+   
     if (!userInfo?.contest_information) return initialData;
 
     let totalCodeforcesSolved = 0;
@@ -232,7 +279,6 @@ const Dashboard: React.FC = () => {
 
         return {
           name: `Practice Contest #${i + 1}`,
-          date: formattedDate,
           solved: `${solvedQuestions} / ${totalQuestions}`, 
           duration: contest.time_duration || 'N/A',
           status: 'Completed'
@@ -250,11 +296,6 @@ const Dashboard: React.FC = () => {
     }
   }, [userInfo]);
 
-  useEffect(() => {
-    // Simulate data fetching
-    const timer = setTimeout(() => setIsLoading(false), 1200);
-    return () => clearTimeout(timer);
-  }, []);
 
   if (isLoading) {
     return (
@@ -275,9 +316,10 @@ const Dashboard: React.FC = () => {
     <div className="dashboard-container">
       <DashboardHeader onStartContest={handleStartContestClick} />
       <main>
+    
         <UserProfile 
-            username={userInfo.name || 'Coding Enthusiast'}
-            email={userInfo.email || 'user@example.com'}
+            username={userInfo?.name || 'Coding Enthusiast'}
+            email={userInfo?.email || 'user@example.com'}
         />
         
         <div className="stats-grid">

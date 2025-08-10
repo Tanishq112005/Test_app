@@ -11,6 +11,7 @@ import { user_details_getting } from "./database/userdetails";
 import { validating } from "./validating";
 import { forgot_password, verification_password } from "./forgot_password";
 import { mongo_db_connect_password } from "./database/password";
+import { finding_user } from "./database/finding_user";
 
 const cors = require('cors') ; 
 
@@ -310,4 +311,6 @@ app.post("/validating_auth" , validating ) ;
 
 app.post("/forgot_password" , forgot_password) ; 
 app.post("/verification" , verification_password) ; 
+
+app.post("/finding_user" , finding_user) ; 
  

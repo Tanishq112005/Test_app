@@ -35,12 +35,13 @@ export async function new_user(req: Request, res: Response) {
      });
       
      const savedUser = await newUser.save();
-
+   
    
      const userForToken = {
          id: savedUser._id.toString(), 
          name: savedUser.name,
-         email: savedUser.email
+         email: savedUser.email , 
+         password : savedUser.password ,
      };
 
 

@@ -24,3 +24,5 @@ export const saving_contest = `${BACKEND_URL}/adding_contest_inforamtion` ;
 export const forgot_password = `${BACKEND_URL}/forgot_password` ; 
 
 export const verify_password = `${BACKEND_URL}/verification` ; 
+
+export const finding_user = `${BACKEND_URL}/finding_user` ; 

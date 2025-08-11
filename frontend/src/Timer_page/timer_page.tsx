@@ -18,9 +18,9 @@ function Timer_page() {
   
 
   function enterFullScreenMode () {
-    const element = document.documentElement;
+    const element = document.documentElement as any;
     if (element.requestFullscreen) {
-        element.requestFullscreen().catch(err => {
+        element.requestFullscreen().catch((err : any) => {
             console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
         });
     } else if (element.mozRequestFullScreen) { // Firefox

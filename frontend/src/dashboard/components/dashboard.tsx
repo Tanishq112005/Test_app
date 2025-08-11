@@ -39,7 +39,7 @@ interface ModalProps {
 }
 
 function isConsideredMobile(): boolean {
-    if (navigator.userAgentData && navigator.userAgentData.mobile) return true;
+    if ((navigator as any).userAgentData && (navigator as any).userAgentData.mobile) return true;
     const hasTouch = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
     return hasTouch && window.innerWidth < 1024;
 }
@@ -275,8 +275,8 @@ const Dashboard: React.FC = () => {
         const totalQuestions = contest.total_question ;
         const solvedQuestions = solvedCodeforces + solvedLeetcode;
         
-        const date = new Date(contest.date);
-        const formattedDate = !isNaN(date.getTime()) ? date.toLocaleDateString() : 'N/A';
+     
+        
         console.log(i+1) ; 
         console.log(totalQuestions) ; 
         return {

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router'; 
-import './Dashboard.css';
+import './dashboard.css';
 import {
   FaTrophy,
   FaPlus,

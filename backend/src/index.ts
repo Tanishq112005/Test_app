@@ -305,7 +305,7 @@ app.post("/adding_contest_inforamtion" , adding_contest_information) ;
 app.post("/getting_user_data" , user_details_getting ) ; 
 app.post("/adding_contest_information" , adding_contest_information) ; 
 app.post("/validating_auth" , validating ) ; 
- const server = app.listen(port, function () {
+ const server = app.listen(port, '0.0.0.0' ,  function () {
     console.log(`Server is running on the port ${port}`);
 })
 

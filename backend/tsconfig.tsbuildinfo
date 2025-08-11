@@ -1,0 +1,1 @@
+{"root":["./src/ai.ts","./src/forgot_password.ts","./src/index.ts","./src/jwt.ts","./src/keys.ts","./src/validating.ts","./src/database/adding_contest.ts","./src/database/database.ts","./src/database/finding_user.ts","./src/database/insert_new_user.ts","./src/database/login.ts","./src/database/password.ts","./src/database/userdetails.ts"],"version":"5.8.3"}

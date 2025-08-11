@@ -1,4 +1,4 @@
-import React from 'react';
+
 import './test_page.css'; 
 
 function TimeUpModal() {

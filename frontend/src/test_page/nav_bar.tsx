@@ -1,5 +1,5 @@
 
-import { useNavigate } from "react-router";
+
 import { get_value } from "../component/changer_value";
 import End_test_button from "../component/end_test_button";
 import Timer_component from "./timer";

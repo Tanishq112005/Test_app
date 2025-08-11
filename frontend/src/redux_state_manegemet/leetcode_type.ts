@@ -13,7 +13,7 @@ const leetcode_type_Slice = createSlice({
   name: "leetcodequestion_type",
   initialState,
   reducers: {
-    setLeetcodeQuestions_type: (state, action) => {
+    setLeetcodeQuestions_type: (_state,  action) => {
       return action.payload
     },
   },

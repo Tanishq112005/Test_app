@@ -1,6 +1,6 @@
 // src/components/Question_solved_or_not.tsx
 
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { type AppDispatch, type RootState } from "../redux_state_manegemet/store";
 import { question_list_type } from "../redux_state_manegemet/question_list";

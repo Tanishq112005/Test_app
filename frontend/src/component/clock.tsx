@@ -1,10 +1,10 @@
 
 
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Timer from './timer';
 import './clock.css'
 
-function Clock({ time_value , onTimerEnd }) {
+function Clock({ time_value , onTimerEnd } : any) {
   const [time, setTime] = useState('');
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 // src/components/Result_Saving.tsx
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import axios from "axios";

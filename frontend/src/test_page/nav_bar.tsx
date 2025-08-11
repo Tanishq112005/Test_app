@@ -6,7 +6,7 @@ import Timer_component from "./timer";
 import { useEffect } from "react";
 
 function Nav_bar() {
-  const navigate = useNavigate();
+ 
 
 
   useEffect(() => {

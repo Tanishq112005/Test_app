@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { type AppDispatch, type RootState } from '../redux_state_manegemet/store';
@@ -25,7 +25,7 @@ const FileCheckIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><path d="m9 15 2 2 4-4"></path></svg>
 );
 
-const RuleItem = ({ icon, title, children }) => (
+const RuleItem = ({ icon, title, children } : any) => (
   <div className="rule-item">
     <div className="rule-icon">{icon}</div>
     <div className="rule-content">
@@ -86,7 +86,7 @@ function ConfirmationPage() {
           {/* Moved language selector to be the LAST item in the grid */}
           <RuleItem icon={<CodeIcon />} title="Language & Allowed Resources">
             <p>Please select your preferred language below. You may only use the built-in code editor. Do not use any external devices.</p>
-            <div style={{ marginTop: '1rem' }}>
+            <div >
               <Coading_language />
             </div>
           </RuleItem>

@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { FaLaptopCode, FaStar, FaChartLine } from 'react-icons/fa';
 
 const benefitsData = [

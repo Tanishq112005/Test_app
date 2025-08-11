@@ -23,7 +23,7 @@ function Test_page() {
   const cfQuestions = useSelector((s: RootState) => s.codeforcesquestion.value);
   const lcQuestions = useSelector((s: RootState) => s.leetcodequestionlist.value);
   const questionNumber = useSelector((s: RootState) => s.question_is_on.value);
-  const total_question = useSelector((s: RootState) => s.question.value);
+  
   const isSubmissionModalVisible = useSelector((s: RootState) => s.submission_button.value);
   const timer_complete = useSelector((s: RootState) => s.timer_complete.value);
   const navigate = useNavigate();

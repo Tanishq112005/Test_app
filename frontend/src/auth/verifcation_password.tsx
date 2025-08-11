@@ -1,7 +1,7 @@
 // /src/components/Verification.tsx
 
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import { verify_password } from "../keys/links"; // Assuming this points to your /verification route
 import "./Auth.css";

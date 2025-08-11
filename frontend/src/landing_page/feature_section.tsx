@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { FaClock, FaTachometerAlt, FaCode } from 'react-icons/fa';
 // Make sure you have a real image here for the best look
 import dashboardImage from "../assets/Screenshot 2025-08-09 180126.png"; 

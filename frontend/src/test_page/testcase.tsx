@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import  { useState, useEffect } from 'react';
+import { useSelector} from 'react-redux';
 import axios from 'axios';
-import { type RootState, type AppDispatch } from '../redux_state_manegemet/store';
+import { type RootState } from '../redux_state_manegemet/store';
 import { checking_link } from '../keys/links';
 
 
@@ -19,7 +19,6 @@ function TestCases() {
   const [submissionResult, setSubmissionResult] = useState<string | null>(null);
 
 
-  const dispatch = useDispatch<AppDispatch>();
   const sampleTestCases = (useSelector((s: RootState) => s.sample_test.value) as TestCase[]) || [];
   const lang = useSelector((s: RootState) => s.lang.value);
   const files = useSelector((s: RootState) => s.files.value);
@@ -147,7 +146,7 @@ function TestCases() {
   };
 
   const activeTestCase = sampleTestCases[activeTestCaseIndex];
-  const activeTestResult = results[activeTestCaseIndex];
+
   const isProcessing = isRunningTests || isSubmitting;
 
   return (

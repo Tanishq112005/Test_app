@@ -1,11 +1,11 @@
 import jwt from 'jsonwebtoken';
 
-import { JWT_SECRET } from './keys';
 
 
+require('dotenv').config();
 
 
-const JWT_KEY : any = JWT_SECRET;
+const JWT_KEY : any = process.env.JWT_SECRET;
 
 if (!JWT_KEY) {
     throw new Error("FATAL ERROR: JWT_SECRET is not defined in .env file.");
@@ -28,7 +28,7 @@ export function generateToken(user: UserPayload): string {
     };
  
  
-    const token = jwt.sign(payload, JWT_SECRET , {
+    const token = jwt.sign(payload, JWT_KEY , {
         expiresIn: '1d',
     });
 

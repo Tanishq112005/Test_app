@@ -3,9 +3,9 @@
 import bcrypt from "bcryptjs";
 import { User } from "./database/database";
 import { db_password } from "./database/password";
-import { company_mail, company_password } from "./keys";
-const nodemailer = require('nodemailer');
 
+const nodemailer = require('nodemailer');
+require('dotenv').config();
 function generateOTP() {
     return Math.floor(100000 + Math.random() * 900000);
 }
@@ -42,13 +42,13 @@ export async function forgot_password(req : any, res : any) {
         let transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: company_mail,
-                pass: company_password
+                user: process.env.Company_mail,
+                pass: process.env.Company_password
             }
         });
 
         let mailOptions = {
-            from: company_mail,
+            from: process.env.Company_mail,
             to: email,
             subject: "Password Reset Request",
             text: `Your One-Time Password (OTP) for resetting your password is: ${otp}`

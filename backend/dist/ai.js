@@ -10,9 +10,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const genai_1 = require("@google/genai");
-const keys_1 = require("./keys");
+require('dotenv').config();
 const ai = new genai_1.GoogleGenAI({
-    apiKey: keys_1.google_api_key,
+    apiKey: process.env.Google_api_key,
 });
 function buildPrompt(questionContext, code) {
     return `
@@ -84,7 +84,7 @@ Input: ${question.sampleTestCase}
         const prompt = buildPrompt(fullQuestionContext, code);
         try {
             const response = yield ai.models.generateContent({
-                model: "gemini-2.5-pro",
+                model: "gemini-2.5-flash",
                 contents: [{ role: "user", parts: [{ text: prompt }] }],
             });
             const resultText = ((_a = response.text) === null || _a === void 0 ? void 0 : _a.trim()) || "AI did not provide a valid response.";

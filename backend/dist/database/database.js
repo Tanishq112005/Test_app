@@ -11,7 +11,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.User = void 0;
 exports.mongo_db_connect = mongo_db_connect;
-const keys_1 = require("../keys");
+require('dotenv').config();
+const mongo_db = process.env.Mongo_db;
 const mongoose = require('mongoose');
 const contestSchema = new mongoose.Schema({
     total_question: Number,
@@ -36,7 +37,7 @@ exports.User = mongoose.model("User", userSchema);
 function mongo_db_connect() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield mongoose.connect(keys_1.mongo_db);
+            yield mongoose.connect(mongo_db);
             console.log("MongoDB connected");
         }
         catch (err) {

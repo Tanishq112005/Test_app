@@ -20,7 +20,10 @@ const port = port_number;
 const app = express();
 app.use(express.json()) ; 
 app.use(bodyParser.json()) ; 
-app.use(cors()) ; 
+const corsOptions = {
+  origin: 'https://algodojo.vercel.app'
+};
+app.use(cors(corsOptions));
  mongo_db_connect() ; 
  mongo_db_connect_password() ; 
 type ProblemSummary = {

@@ -14,10 +14,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.validating = validating;
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const keys_1 = require("./keys");
+require('dotenv').config();
 function validating(req, res) {
     return __awaiter(this, void 0, void 0, function* () {
-        const secret_key = keys_1.JWT_SECRET;
+        const secret_key = process.env.JWT_SECRET;
         const { authtoken } = req.body;
         try {
             const result = jsonwebtoken_1.default.verify(authtoken, secret_key);

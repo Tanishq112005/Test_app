@@ -11,7 +11,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.db_password = void 0;
 exports.mongo_db_connect_password = mongo_db_connect_password;
-const keys_1 = require("../keys");
+require('dotenv').config();
+const mongo_db = process.env.Mongo_db;
 const mongoose = require('mongoose');
 const password_schema = new mongoose.Schema({
     email: String,
@@ -22,7 +23,7 @@ exports.db_password = mongoose.model("Password", password_schema);
 function mongo_db_connect_password() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            yield mongoose.connect(keys_1.mongo_db);
+            yield mongoose.connect(mongo_db);
             console.log("MongoDB connected");
         }
         catch (err) {

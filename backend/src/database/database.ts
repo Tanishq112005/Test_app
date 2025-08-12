@@ -1,4 +1,6 @@
-import { mongo_db } from "../keys";
+
+require('dotenv').config();
+const mongo_db = process.env.Mongo_db ; 
 const mongoose = require('mongoose');
 
 const contestSchema = new mongoose.Schema({

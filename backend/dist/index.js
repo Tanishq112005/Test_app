@@ -13,7 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
-const keys_1 = require("./keys");
 const body_parser_1 = __importDefault(require("body-parser"));
 const puppeteer_core_1 = __importDefault(require("puppeteer-core"));
 const ai_1 = __importDefault(require("./ai"));
@@ -26,13 +25,17 @@ const validating_1 = require("./validating");
 const forgot_password_1 = require("./forgot_password");
 const password_1 = require("./database/password");
 const finding_user_1 = require("./database/finding_user");
+require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
-const port = keys_1.port_number;
+const port = process.env.Port_number;
 const app = express();
 app.use(express.json());
 app.use(body_parser_1.default.json());
-app.use(cors());
+const corsOptions = {
+    origin: 'https://algodojo.vercel.app'
+};
+app.use(cors(corsOptions));
 (0, database_1.mongo_db_connect)();
 (0, password_1.mongo_db_connect_password)();
 app.use(express.json());
@@ -64,12 +67,11 @@ function scrapeProblem(contestId, problemIndex) {
             args: [
                 '--no-sandbox',
                 '--disable-setuid-sandbox',
-                // The following args are recommended for Render/Docker environments
                 '--disable-dev-shm-usage',
                 '--disable-accelerated-2d-canvas',
                 '--no-first-run',
                 '--no-zygote',
-                '--single-process', // This is for Docker environments, might help
+                '--single-process',
                 '--disable-gpu'
             ]
         };
@@ -111,7 +113,6 @@ function scrapeProblem(contestId, problemIndex) {
             return Object.assign({ contestId, problemIndex, url, scrapedAt: new Date().toISOString() }, data);
         }
         catch (error) {
-            console.error(`Error while scraping ${url}:`, error);
             throw new Error('ScrapeFailed');
         }
         finally {

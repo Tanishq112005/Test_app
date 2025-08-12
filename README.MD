@@ -198,3 +198,4 @@ Contributions are what make the open-source community such an amazing place to l
 2. email -(algodojo1@gmail.com)
 3. Project Link: [https://github.com/Tanishq112005/Test_app](https://github.com/Tanishq112005/Test_app)
 4. live-project-on : [AlgoDojo](algodojo.vercel.app) 
+5. linkedin : [Tanishq Jain](https://www.linkedin.com/in/tanishq-jain-6b90b1292/) 

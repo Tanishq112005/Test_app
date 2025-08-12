@@ -5,7 +5,7 @@ import type { RootState } from "../redux_state_manegemet/store";
 function QuestionDisplay() {
 
   const questionHtml = useSelector((s : RootState) => s.question_page.value);
-  console.log(questionHtml) ; 
+
   return (
     <div className="question-container">
      

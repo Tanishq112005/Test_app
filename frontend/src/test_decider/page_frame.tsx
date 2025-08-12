@@ -25,11 +25,6 @@ function PageFrame() {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
-        console.log("--- Form submitted. Starting handleSubmit. ---");
-
-        // --- Start of Enhanced Validation ---
-
-        // 1. Check if all fields are filled
         if (
             !totalQuestions || !testDuration || !codeforcesQuestions ||
             !leetcodeQuestions || !codeforcesRating || !leetcodeDifficulty
@@ -78,12 +73,12 @@ function PageFrame() {
             leetcode_type: leetcodeDifficulty,
         };
 
-        console.log("Calling decider function with these options:", options);
+      
 
         try {
             const { codeforces_questions, leetcode_questions } = await decider(options);
 
-            console.log("Decider function successful. Received questions.");
+       
 
             if (codeforces_questions.length < cfNum || leetcode_questions.length < lcNum) {
                 alert("Could not fetch the required number of questions. Please try different criteria (e.g., a more common rating or difficulty).");

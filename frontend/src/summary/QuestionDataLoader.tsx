@@ -12,9 +12,9 @@ function QuestionDataLoader() {
   const questionNumber = useSelector((s: RootState) => s.question_is_on.value);
 
   useEffect(() => {
-    console.log(questionNumber) ; 
+  
     if (!Array.isArray(cfQuestions) || !Array.isArray(lcQuestions)) {
-      console.log("Waiting for question lists to load...");
+    
       return;
     }
 
@@ -41,7 +41,7 @@ function QuestionDataLoader() {
       }
     }
 
-    console.log(questionHtml) ; 
+    
 
     dispatch(question_page_type(questionHtml || "<p>Question not found.</p>"));
 

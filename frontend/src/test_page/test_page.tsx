@@ -89,7 +89,7 @@ function Test_page() {
       if (document.hidden) {
  
         if (hasBeenVisible.current) {
-          console.log("User switched tabs. Ending the test.");
+        
           dispatch(test_endup(true));
         }
       } else {
@@ -111,7 +111,7 @@ function Test_page() {
     
         if (hasBeenFullscreen.current) {
        
-          console.log("Exited fullscreen. Ending the test.");
+       
           dispatch(test_endup(true));
         }
       }

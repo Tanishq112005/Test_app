@@ -47,8 +47,7 @@ function QuestionDataLoader() {
         const question = lcQuestions[lcIndex];
         if (question) {
           questionHtml = question.descriptionHtml;
-          // You might not have sampleTestCase for LeetCode in the same format
-          // Here we parse it from the HTML
+ 
           if (typeof question.descriptionHtml === 'string') {
             sampleTestCase = parseSamplesFromHtml(question.descriptionHtml);
           }
@@ -56,8 +55,7 @@ function QuestionDataLoader() {
       }
     }
 
-    // Dispatch the found data to Redux.
-    // If the question is not found, it might be good to dispatch a "not found" state.
+    
     if (questionHtml) {
       dispatch(question_page_type(questionHtml));
       if (sampleTestCase) {
@@ -66,7 +64,7 @@ function QuestionDataLoader() {
     }
   }, [cfQuestions, lcQuestions, questionNumber, dispatch]);
 
-  // This component renders nothing.
+  
   return null;
 }
 

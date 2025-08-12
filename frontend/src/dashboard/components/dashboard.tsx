@@ -276,9 +276,7 @@ const Dashboard: React.FC = () => {
         const solvedQuestions = solvedCodeforces + solvedLeetcode;
         
      
-        
-        console.log(i+1) ; 
-        console.log(totalQuestions) ; 
+    
         return {
           name: `Practice Contest #${i + 1}`,
           date : contest.date ,

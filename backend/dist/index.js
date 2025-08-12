@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const axios_1 = __importDefault(require("axios"));
 const keys_1 = require("./keys");
 const body_parser_1 = __importDefault(require("body-parser"));
-const puppeteer_1 = __importDefault(require("puppeteer"));
+const puppeteer_core_1 = __importDefault(require("puppeteer-core"));
 const ai_1 = __importDefault(require("./ai"));
 const database_1 = require("./database/database");
 const login_1 = require("./database/login");
@@ -76,7 +76,7 @@ function scrapeProblem(contestId, problemIndex) {
         if (process.env.PUPPETEER_EXECUTABLE_PATH) {
             launchOptions.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
         }
-        const browser = yield puppeteer_1.default.launch(launchOptions);
+        const browser = yield puppeteer_core_1.default.launch(launchOptions);
         const page = yield browser.newPage();
         yield page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
             '(KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36');

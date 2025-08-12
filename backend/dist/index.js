@@ -59,10 +59,13 @@ app.post('/problems_codeforces', (req, res) => __awaiter(void 0, void 0, void 0,
 function scrapeProblem(contestId, problemIndex) {
     return __awaiter(this, void 0, void 0, function* () {
         const url = `https://codeforces.com/contest/${contestId}/problem/${problemIndex}?mobile=false`;
-        const browser = yield puppeteer_1.default.launch({
+        const launchOptions = {
             headless: true,
             args: ['--no-sandbox', '--disable-setuid-sandbox']
-        });
+        };
+        if (process.env.CHROME_PATH)
+            launchOptions.executablePath = process.env.CHROME_PATH;
+        const browser = yield puppeteer_1.default.launch(launchOptions);
         const page = yield browser.newPage();
         yield page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
             '(KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36');
@@ -120,7 +123,7 @@ app.post('/full_question_codeforces', (req, res) => __awaiter(void 0, void 0, vo
             res.status(502).json({ error: 'Failed to scrape full question from Codeforces' });
         }
         else {
-            res.status(500).json({ error: 'Unexpected server error' });
+            res.status(500).json({ error: err });
         }
     }
 }));

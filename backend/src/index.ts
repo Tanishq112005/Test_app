@@ -71,11 +71,13 @@ app.post('/problems_codeforces', async (req: any, res: any) => {
 // getting the question and sample test case for the codeforces problem 
 async function scrapeProblem(contestId: string, problemIndex: string) {
   const url = `https://codeforces.com/contest/${contestId}/problem/${problemIndex}?mobile=false`;
-  const browser = await puppeteer.launch({
+  const launchOptions: any = {
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox']
-  });
-  try {
+  };
+  if (process.env.CHROME_PATH) launchOptions.executablePath = process.env.CHROME_PATH;
+  
+  const browser = await puppeteer.launch(launchOptions);
   const page = await browser.newPage();
   
   await page.setUserAgent(
@@ -84,7 +86,7 @@ async function scrapeProblem(contestId: string, problemIndex: string) {
   );
   await page.setViewport({ width: 1280, height: 800 });
 
-  
+  try {
   
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 0 });
 

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { port_number } from "./keys";
 import bodyParser from "body-parser";
-import puppeteer from "puppeteer";
+import puppeteer from "puppeteer-core";
 import ai_testing from "./ai";
 import { mongo_db_connect } from "./database/database";
 import { login } from "./database/login";

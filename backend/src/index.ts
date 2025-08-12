@@ -1,5 +1,4 @@
 import axios from "axios";
-import { port_number } from "./keys";
 import bodyParser from "body-parser";
 import puppeteer from "puppeteer-core";
 import ai_testing from "./ai";
@@ -12,11 +11,11 @@ import { validating } from "./validating";
 import { forgot_password, verification_password } from "./forgot_password";
 import { mongo_db_connect_password } from "./database/password";
 import { finding_user } from "./database/finding_user";
-
+require('dotenv').config();
 const cors = require('cors') ; 
 
 const express = require('express');
-const port = port_number;
+const port = process.env.Port_number;
 const app = express();
 app.use(express.json()) ; 
 app.use(bodyParser.json()) ; 

@@ -1,9 +1,9 @@
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from './keys';
 
 
+require('dotenv').config();
 export async function validating(req : any , res : any){
-    const secret_key : any = JWT_SECRET ; 
+    const secret_key : any = process.env.JWT_SECRET ; 
     const {authtoken} = req.body ; 
     try {
         const result = jwt.verify(authtoken , secret_key) ;

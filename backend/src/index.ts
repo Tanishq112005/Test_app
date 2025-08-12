@@ -75,6 +75,7 @@ async function scrapeProblem(contestId: string, problemIndex: string) {
     headless: true,
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
+  try {
   const page = await browser.newPage();
   
   await page.setUserAgent(
@@ -83,7 +84,7 @@ async function scrapeProblem(contestId: string, problemIndex: string) {
   );
   await page.setViewport({ width: 1280, height: 800 });
 
-  try {
+  
   
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 0 });
 

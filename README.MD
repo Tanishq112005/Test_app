@@ -108,3 +108,89 @@ JWT_SECRET=your_super_secret_jwt_key
 GOOGLE_API_KEY=your_google_api_key
 COMPANY_MAIL=your_gmail_address_for_sending_otps
 COMPANY_PASSWORD=your_16_digit_google_app_password
+**How to get these values:**
+*   **`PORT_NUMBER`**: The port on which your backend server will run (e.g., 8000).
+*   **`MONGO_DB`**: Your connection string from [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
+*   **`JWT_SECRET`**: A long, random, and secret string for signing authentication tokens.
+*   **`GOOGLE_API_KEY`**: Get this from the [Google Cloud Console](https://console.cloud.google.com/).
+*   **`COMPANY_MAIL`**: The Gmail account you want to use to send verification emails/OTPs.
+*   **`COMPANY_PASSWORD`**: **This is NOT your main Google account password.** It is a special 16-digit **App Password**. You can generate one by going to your Google Account -> Security -> 2-Step Verification -> App Passwords.
+
+#### 2. Frontend Configuration
+For the frontend to communicate with the backend, you need to set the backend URL.
+1.  Navigate to the `frontend/src/keys/` directory.
+2.  Open the file that contains the backend URL variable (e.g., `links.ts`).
+3.  Find the `BACKEND_URL` variable and replace its value with your local backend address, using the port you set in the `.env` file.
+    ```typescript
+    // Example in a file like frontend/src/keys/links.ts
+    export const BACKEND_URL = 'http://localhost:8000/';
+    ```
+
+### Running the Application
+
+Follow these steps to run the project after completing the installation and configuration.
+
+#### 1. Start the Backend Server
+You have two options for running the backend:
+
+**Option A: For Development (using `ts-node`)**
+This method runs the TypeScript code directly, which is useful when you are actively developing.
+1.  Navigate into the `backend/src` directory:
+    ```bash
+    cd backend/src
+    ```
+2.  Run the server using `ts-node`:
+    ```bash
+    ts-node index.ts
+    ```
+    The server should now be running in development mode on `http://localhost:PORT_NUMBER`.
+
+**Option B: For Production (using compiled JavaScript)**
+This method runs the standard, compiled JavaScript code, which is faster and how it would run on a live server.
+1.  First, compile your TypeScript code. From the main `backend` directory, run:
+    ```bash
+    tsc
+    ```
+    This creates a `dist` folder containing the compiled `.js` files.
+
+2.  Navigate into the newly created `dist` folder:
+    ```bash
+    cd backend/dist
+    ```
+
+3.  Run the application using Node.js:
+    ```bash
+    node index.js
+    ```
+    The server should now be running in production mode on `http://localhost:PORT_NUMBER`.
+
+#### 2. Start the Frontend Development Server
+1.  In a **separate terminal window**, navigate to the `frontend` directory:
+    ```bash
+    cd frontend
+    ```
+2.  Run the development server:
+    ```bash
+    npm run dev
+    ```
+3.  Open your browser and go to the URL provided (usually `http://localhost:5173`).
+
+---
+
+## 🤝 Contributing
+
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1.  Fork the Project.
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`).
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`).
+4.  Push to the Branch (`git push origin feature/AmazingFeature`).
+5.  Open a Pull Request.
+
+---
+
+## 📬 Contact
+
+Tanishq - [@Tanishq112005](https://github.com/Tanishq112005)
+
+Project Link: [https://github.com/Tanishq112005/Test_app](https://github.com/Tanishq112005/Test_app)

@@ -79,12 +79,12 @@ async function scrapeProblem(contestId: string, problemIndex: string) {
     args: [
       '--no-sandbox', 
       '--disable-setuid-sandbox',
-      // The following args are recommended for Render/Docker environments
+     
       '--disable-dev-shm-usage',
       '--disable-accelerated-2d-canvas',
       '--no-first-run',
       '--no-zygote',
-      '--single-process', // This is for Docker environments, might help
+      '--single-process',
       '--disable-gpu'
     ]
   };
@@ -144,7 +144,7 @@ async function scrapeProblem(contestId: string, problemIndex: string) {
 
     return { contestId, problemIndex, url, scrapedAt: new Date().toISOString(), ...data };
   } catch (error) {
-    console.error(`Error while scraping ${url}:`, error);
+
     throw new Error('ScrapeFailed');
   } finally {
     await browser.close();

@@ -50,10 +50,9 @@ async function decider(
     leetcode_type,
   } = options;
 
-  console.log("Decider: Starting process...");
 
-  
-  console.log("Decider: Requesting CF problem list for rating:", codeforces_rating);
+
+
   const cfListRes = await axios.post(codeforces_get_question_list, {
     rating: codeforces_rating
   });
@@ -65,7 +64,7 @@ async function decider(
   }
 
   const cfProblems: CodeforcesProblemBrief[] = cfListRes.data.result.problems;
-  console.log(`Decider: Received ${cfProblems.length} CF problems from list API.`);
+ 
 
   if (cfProblems.length === 0) {
     throw new Error(`No Codeforces problems found for rating ${codeforces_rating}. Please try a different rating.`);
@@ -93,10 +92,9 @@ async function decider(
     }
   }
   const codeforces_questions = codeforces_array;
-  console.log(`Decider: Successfully fetched full CF questions.`);
 
 
-  console.log("Decider: Requesting LC list for difficulty:", leetcode_type);
+
   const lcListRes = await axios.post(leetcode_get_question_list, {
     difficulty: leetcode_type
   });
@@ -107,7 +105,7 @@ async function decider(
   }
 
   const lcProblems: LeetcodeProblemBrief[] = lcListRes.data.unpaid;
-  console.log(`Decider: Received ${lcProblems.length} LC problems from list API.`);
+
 
   if (lcProblems.length === 0) {
     throw new Error(`No LeetCode problems found for difficulty "${leetcode_type}". Please check the spelling (e.g., Easy, Medium, Hard).`);
@@ -116,13 +114,13 @@ async function decider(
   const lcIndices = getRandomUniqueSet(lcProblems.length, lcCount);
   const selectedLcBriefs = lcIndices.map((i) => lcProblems[i]);
 
-  console.log(`Decider: Requesting full details for ${selectedLcBriefs.length} LC problems.`);
+
   const lcFullPromises = selectedLcBriefs.map((brief) =>
     axios.post(leetcode_full_question, { titleSlug: brief.titleSlug })
       .then(res => res.data)
   );
   const leetcode_questions = await Promise.all(lcFullPromises);
-  console.log(`Decider: Successfully fetched ${leetcode_questions.length} full LC questions.`);
+
 
   return { codeforces_questions, leetcode_questions };
 }

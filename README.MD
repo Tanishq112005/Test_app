@@ -20,7 +20,7 @@ For those looking to climb the ranks on platforms like **Codeforces** and **Leet
 ### 2. For the Interview Candidate: Ace Your Technical Interviews
 Technical interviews are all about thinking clearly and delivering a working solution under the pressure of the clock. AlgoDojo replicates this high-stakes environment, allowing you to build the confidence and composure needed to succeed.
 
-*   **Practice in a Realistic Setting:** Solve LeetCode-style problems within a set time limit, mirroring the conditions of a typical online assessment or a live coding interview round. This helps you get accustomed to the pressure and manage your nerves.
+*   **Practice in a Realistic Setting:** Solve LeetCode-style and Codeforces-style problems within a set time limit, mirroring the conditions of a typical online assessment or a live coding interview round. This helps you get accustomed to the pressure and manage your nerves.
 *   **Build Problem-Solving Muscle:** By repeatedly practicing in a timed setting, you reduce anxiety and train your brain to stay focused on the logic, even when the clock is ticking.
 *   **Master the Clock:** Learn to pace yourself, allocate time for understanding the problem, coding the solution, and testing it—all within the interview's constraints.
 
@@ -91,7 +91,7 @@ Make sure you have the following installed on your machine:
 
 4.  **Set up the Backend:**
     ```bash
-    cd ../backend
+    cd backend
     npm install
     ```
 
@@ -115,7 +115,7 @@ COMPANY_PASSWORD=your_16_digit_google_app_password
 *   **`PORT_NUMBER`**: The port on which your backend server will run (e.g., 8000).
 *   **`MONGO_DB`**: Your connection string from [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
 *   **`JWT_SECRET`**: A long, random, and secret string for signing authentication tokens.
-*   **`GOOGLE_API_KEY`**: Get this from the [Google Cloud Console](https://console.cloud.google.com/).
+*   **`GOOGLE_API_KEY`**: Get this from the [Google AI STUDIO](https://console.cloud.google.com/).
 *   **`COMPANY_MAIL`**: The Gmail account you want to use to send verification emails/OTPs.
 *   **`COMPANY_PASSWORD`**: **This is NOT your main Google account password.** It is a special 16-digit **App Password**. You can generate one by going to your Google Account -> Security -> 2-Step Verification -> App Passwords.
 
@@ -125,7 +125,6 @@ For the frontend to communicate with the backend, you need to set the backend UR
 2.  Open the file that contains the backend URL variable (e.g., `links.ts`).
 3.  Find the `BACKEND_URL` variable and replace its value with your local backend address, using the port you set in the `.env` file.
     ```typescript
-    // Example in a file like frontend/src/keys/links.ts
     export const BACKEND_URL = 'http://localhost:8000/';
     ```
 
@@ -152,7 +151,7 @@ This method runs the TypeScript code directly, which is useful when you are acti
 This method runs the standard, compiled JavaScript code, which is faster and how it would run on a live server.
 1.  First, compile your TypeScript code. From the main `backend` directory, run:
     ```bash
-    tsc
+    tsc -b
     ```
     This creates a `dist` folder containing the compiled `.js` files.
 
@@ -195,5 +194,5 @@ Contributions are what make the open-source community such an amazing place to l
 ## 📬 Contact
 
 Tanishq - [@Tanishq112005](https://github.com/Tanishq112005)
-
+Email - (algodojo1@gmail.com)
 Project Link: [https://github.com/Tanishq112005/Test_app](https://github.com/Tanishq112005/Test_app)

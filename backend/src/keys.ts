@@ -1,4 +1,4 @@
-export const port_number : number = 3000 ; 
+export const port_number  = process.env.PORT || 3000 ; 
 
 export const google_api_key : any = "AIzaSyDnbDahWYbNPHZH-Okhsjm6ldjuLqlUFnE" ; 
 

@@ -150,7 +150,7 @@ app.post('/full_question_codeforces', async (req : any, res : any) => {
     if ((err as Error).message === 'ScrapeFailed') {
       res.status(502).json({ error: 'Failed to scrape full question from Codeforces' });
     } else {
-      res.status(500).json({ error: 'Unexpected server error' });
+      res.status(500).json({ error: err });
     }
   }
 });

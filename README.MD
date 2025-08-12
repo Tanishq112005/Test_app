@@ -115,7 +115,7 @@ COMPANY_PASSWORD=your_16_digit_google_app_password
 *   **`PORT_NUMBER`**: The port on which your backend server will run (e.g., 8000).
 *   **`MONGO_DB`**: Your connection string from [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
 *   **`JWT_SECRET`**: A long, random, and secret string for signing authentication tokens.
-*   **`GOOGLE_API_KEY`**: Get this from the [Google AI STUDIO](https://console.cloud.google.com/).
+*   **`GOOGLE_API_KEY`**: Get this from the [Google AI Studio](https://console.cloud.google.com/).
 *   **`COMPANY_MAIL`**: The Gmail account you want to use to send verification emails/OTPs.
 *   **`COMPANY_PASSWORD`**: **This is NOT your main Google account password.** It is a special 16-digit **App Password**. You can generate one by going to your Google Account -> Security -> 2-Step Verification -> App Passwords.
 
@@ -125,6 +125,7 @@ For the frontend to communicate with the backend, you need to set the backend UR
 2.  Open the file that contains the backend URL variable (e.g., `links.ts`).
 3.  Find the `BACKEND_URL` variable and replace its value with your local backend address, using the port you set in the `.env` file.
     ```typescript
+    // Example in a file like frontend/src/keys/links.ts
     export const BACKEND_URL = 'http://localhost:8000/';
     ```
 
@@ -193,6 +194,7 @@ Contributions are what make the open-source community such an amazing place to l
 
 ## 📬 Contact
 
-Tanishq - [@Tanishq112005](https://github.com/Tanishq112005)
-Email - (algodojo1@gmail.com)
-Project Link: [https://github.com/Tanishq112005/Test_app](https://github.com/Tanishq112005/Test_app)
+1. Tanishq - [@Tanishq112005](https://github.com/Tanishq112005)  
+2. email -(algodojo1@gmail.com)
+3. Project Link: [https://github.com/Tanishq112005/Test_app](https://github.com/Tanishq112005/Test_app)
+4. live-project-on : [AlgoDojo](algodojo.vercel.app) 

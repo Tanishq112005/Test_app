@@ -108,6 +108,9 @@ JWT_SECRET=your_super_secret_jwt_key
 GOOGLE_API_KEY=your_google_api_key
 COMPANY_MAIL=your_gmail_address_for_sending_otps
 COMPANY_PASSWORD=your_16_digit_google_app_password
+
+
+
 **How to get these values:**
 *   **`PORT_NUMBER`**: The port on which your backend server will run (e.g., 8000).
 *   **`MONGO_DB`**: Your connection string from [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).

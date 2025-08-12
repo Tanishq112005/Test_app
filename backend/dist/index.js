@@ -61,10 +61,21 @@ function scrapeProblem(contestId, problemIndex) {
         const url = `https://codeforces.com/contest/${contestId}/problem/${problemIndex}?mobile=false`;
         const launchOptions = {
             headless: true,
-            args: ['--no-sandbox', '--disable-setuid-sandbox']
+            args: [
+                '--no-sandbox',
+                '--disable-setuid-sandbox',
+                // The following args are recommended for Render/Docker environments
+                '--disable-dev-shm-usage',
+                '--disable-accelerated-2d-canvas',
+                '--no-first-run',
+                '--no-zygote',
+                '--single-process', // This is for Docker environments, might help
+                '--disable-gpu'
+            ]
         };
-        if (process.env.CHROME_PATH)
-            launchOptions.executablePath = process.env.CHROME_PATH;
+        if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+            launchOptions.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+        }
         const browser = yield puppeteer_1.default.launch(launchOptions);
         const page = yield browser.newPage();
         yield page.setUserAgent('Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +

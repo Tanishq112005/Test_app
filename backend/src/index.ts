@@ -73,9 +73,21 @@ async function scrapeProblem(contestId: string, problemIndex: string) {
   const url = `https://codeforces.com/contest/${contestId}/problem/${problemIndex}?mobile=false`;
   const launchOptions: any = {
     headless: true,
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+    args: [
+      '--no-sandbox', 
+      '--disable-setuid-sandbox',
+      // The following args are recommended for Render/Docker environments
+      '--disable-dev-shm-usage',
+      '--disable-accelerated-2d-canvas',
+      '--no-first-run',
+      '--no-zygote',
+      '--single-process', // This is for Docker environments, might help
+      '--disable-gpu'
+    ]
   };
-  if (process.env.CHROME_PATH) launchOptions.executablePath = process.env.CHROME_PATH;
+  if (process.env.PUPPETEER_EXECUTABLE_PATH) {
+    launchOptions.executablePath = process.env.PUPPETEER_EXECUTABLE_PATH;
+  }
   
   const browser = await puppeteer.launch(launchOptions);
   const page = await browser.newPage();

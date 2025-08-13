@@ -32,9 +32,10 @@ Whether you are aiming for a new rating milestone or preparing to land your drea
 
 *(This is where you can add screenshots of your application. Replace the placeholder links below with your actual images.)*
 
-| Login Page                                     | Contest Setup                                      | Practice Arena                                       |
-| :--------------------------------------------: | :------------------------------------------------: | :--------------------------------------------------: |
-| ![Login Page](link_to_your_login_screenshot.png) | ![Contest Setup](link_to_your_setup_screenshot.png) | ![Practice Arena](link_to_your_arena_screenshot.png) |
+| Dashboard                                  | Contest Setup                                      | Rules Page                                       | Pratice Arena                                         | Summary Page 
+                | 
+| :--------------------------------------------: | :------------------------------------------------: | :--------------------------------------------------: | :--------------------------------------------: | :-------------------------------------:|
+| ![Dashboard](./images/dashboard.png) | ![Contest Setup](./images/test_decider_page.png) | ![Rules Page](./images/rules_page.png) | ![Pratice Arena](./images/contest_page2.png) | ![Summary Page](./images/summary_page.png)       |
 
 ---
 

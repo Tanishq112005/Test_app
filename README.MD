@@ -30,12 +30,10 @@ Whether you are aiming for a new rating milestone or preparing to land your drea
 
 ## 📸 Screenshots
 
-*(This is where you can add screenshots of your application. Replace the placeholder links below with your actual images.)*
 
-| Dashboard                                  | Contest Setup                                      | Rules Page                                       | Pratice Arena                                         | Summary Page 
-                | 
-| :--------------------------------------------: | :------------------------------------------------: | :--------------------------------------------------: | :--------------------------------------------: | :-------------------------------------:|
-| ![Dashboard](./images/dashboard.png) | ![Contest Setup](./images/test_decider_page.png) | ![Rules Page](./images/rules_page.png) | ![Pratice Arena](./images/contest_page2.png) | ![Summary Page](./images/summary_page.png)       |
+| Dashboard | Contest Setup | Rules Page | Practice Arena | Summary Page |
+| :---: | :---: | :---: | :---: | :---: |
+| ![Dashboard](./images/dashboard.png) | ![Contest Setup](./images/test_decider_page.png) | ![Rules Page](./images/rules_page.png) | ![Practice Arena](./images/contest_page2.png) | ![Summary Page](./images/summary_page.png) |
 
 ---
 
@@ -51,12 +49,12 @@ Whether you are aiming for a new rating milestone or preparing to land your drea
 
 ## 🛠️ Tech Stack
 
-*   **Languages:** TypeScript, JavaScript, HTML, CSS
-*   **Frontend:** React, Vite
-*   **Backend:** Node.js, Express.js
+*   **Frontend:** React, Vite, TypeScript, HTML, CSS
+*   **Backend:** Node.js, Express.js, TypeScript
 *   **Database:** MongoDB
 *   **Authentication:** JSON Web Tokens (JWT)
 *   **Web Scraping:** [Puppeteer](https://pptr.dev/) (for gathering problem data)
+*   **Containerization:** Docker
 
 ---
 

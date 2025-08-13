@@ -31,20 +31,20 @@ Whether you are aiming for a new rating milestone or preparing to land your drea
 ## 📸 Screenshots
 
 
- #*Dashboard* 
+ *Dashboard* 
  ![Dashboard](./images/dashboard.png) 
  
- #*Contest Setup*
+ *Contest Setup*
   ![Contest Setup](./images/test_decider_page.png) 
   
- #*Rules Page*
+ *Rules Page*
    ![Rules Page](./images/rules_page.png) 
  
- #*Practice Arena*
+ *Practice Arena*
  ![Practice Arena](./images/contest_page2.png) 
  
- #*Summary Page*
-  ![Summary Page](./images/summary_page.png) |
+ *Summary Page*
+  ![Summary Page](./images/summary_page.png) 
 
 ---
 

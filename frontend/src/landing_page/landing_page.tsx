@@ -6,7 +6,7 @@ import WhyUsSection from './whytouse';
 import FeaturesSection from './feature_section';
 import Footer from './footer';
 import './landing.css'; // This will be our new, scoped CSS file
-
+import { Analytics } from "@vercel/analytics/next"
 function Landing_Page() {
   return (
     // This wrapper is the key. All styles in landing.css will only apply inside this div.
@@ -16,6 +16,7 @@ function Landing_Page() {
         <HeroSection />
         <WhyUsSection />
         <FeaturesSection />
+        <Analytics />
       </main>
       <Footer />
     </div>

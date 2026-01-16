@@ -258,6 +258,11 @@ app.post("/adding_contest_inforamtion", adding_contest_1.default);
 app.post("/getting_user_data", userdetails_1.user_details_getting);
 app.post("/adding_contest_information", adding_contest_1.default);
 app.post("/validating_auth", validating_1.validating);
+app.get("/health", function (req, res) {
+    res.status(200).json({
+        msg: "server is running properly"
+    });
+});
 const server = app.listen(port, '0.0.0.0', function () {
     console.log(`Server is running on the port ${port}`);
 });

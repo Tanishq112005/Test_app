@@ -2,3 +2,5 @@
 ./frontend/src/keys/links.ts
 ./frontend/src/keys/timer_change.ts
 ./backend/.env
+.env
+backend/.env

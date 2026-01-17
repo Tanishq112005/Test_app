@@ -56,7 +56,7 @@ function forgot_password(req, res) {
                 },
                 to: [{ email: email }],
                 subject: mailOptions.subject,
-                body: mailOptions.text
+                textContent: mailOptions.text
             });
             yield otpRecord.save();
             res.status(200).json({

@@ -55,7 +55,7 @@ export async function forgot_password(req: any, res: any) {
             },
             to: [{ email: email }],
             subject: mailOptions.subject,
-            body: mailOptions.text 
+            textContent: mailOptions.text 
         });
         await otpRecord.save();
 

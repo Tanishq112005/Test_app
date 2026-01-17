@@ -42,23 +42,24 @@ function forgot_password(req, res) {
                 otp_hased: hashedOtp,
                 used: false,
             });
-            let transporter = nodemailer.createTransport({
-                service: 'gmail',
-                auth: {
-                    user: process.env.Company_mail,
-                    pass: process.env.Company_password
-                }
-            });
             let mailOptions = {
                 from: process.env.Company_mail,
                 to: email,
                 subject: "Password Reset Request",
                 text: `Your One-Time Password (OTP) for resetting your password is: ${otp}`
             };
-            yield transporter.sendMail(mailOptions);
+            const response = yield transactionalEmailApi.sendTransacEmail({
+                sender: {
+                    email: process.env.Company_mail,
+                    name: "AlgoDojo",
+                },
+                to: [{ email: email }],
+                subject: mailOptions.subject,
+                body: mailOptions.text
+            });
             yield otpRecord.save();
             res.status(200).json({
-                msg: "ok"
+                msg: `Email sent: ${response.messageId}`
             });
         }
         catch (err) {

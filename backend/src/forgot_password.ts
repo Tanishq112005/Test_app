@@ -1,6 +1,7 @@
 import bcrypt from "bcryptjs";
 import { User } from "./database/database";
 import { db_password } from "./database/password";
+import { transactionalEmailApi } from "./emailservice";
 
 const nodemailer = require('nodemailer');
 require('dotenv').config();

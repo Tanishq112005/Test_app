@@ -60,7 +60,7 @@ function forgot_password(req, res) {
             });
             yield otpRecord.save();
             res.status(200).json({
-                msg: `Email is Sent Successfully`
+                msg: "ok"
             });
         }
         catch (err) {

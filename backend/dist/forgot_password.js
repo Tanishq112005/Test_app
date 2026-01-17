@@ -17,6 +17,7 @@ exports.verification_password = verification_password;
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const database_1 = require("./database/database");
 const password_1 = require("./database/password");
+const emailservice_1 = require("./emailservice");
 const nodemailer = require('nodemailer');
 require('dotenv').config();
 function generateOTP() {
@@ -48,7 +49,7 @@ function forgot_password(req, res) {
                 subject: "Password Reset Request",
                 text: `Your One-Time Password (OTP) for resetting your password is: ${otp}`
             };
-            const response = yield transactionalEmailApi.sendTransacEmail({
+            const response = yield emailservice_1.transactionalEmailApi.sendTransacEmail({
                 sender: {
                     email: process.env.Company_mail,
                     name: "AlgoDojo",

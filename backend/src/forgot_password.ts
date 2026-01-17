@@ -60,7 +60,7 @@ export async function forgot_password(req: any, res: any) {
         await otpRecord.save();
 
         res.status(200).json({
-            msg: `Email sent: ${response.messageId}`
+            msg: `Email is Sent Successfully`
         });
 
     } catch (err) {

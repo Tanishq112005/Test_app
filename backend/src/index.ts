@@ -19,10 +19,8 @@ const port = process.env.Port_number;
 const app = express();
 app.use(express.json()) ; 
 app.use(bodyParser.json()) ; 
-const corsOptions = {
-  origin: 'https://algodojo.vercel.app'
-};
-app.use(cors(corsOptions));
+
+app.use(cors());
  mongo_db_connect() ; 
  mongo_db_connect_password() ; 
 type ProblemSummary = {
